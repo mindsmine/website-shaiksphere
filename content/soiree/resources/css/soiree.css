@@ -1,0 +1,56 @@
+/**
+ * Soiree StyleSheet
+ * Author: Mohammed Shaik Hussain Ali
+ */
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* HTML Tags */
+
+body {
+    font-family: 'Bookman Old Style', serif;
+    font-size: 100%;
+    margin: 0;
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* Header */
+
+.header {
+    background-color: black;
+    height: 3.0rem;
+    width: 100%;
+}
+
+.header-title {
+    margin: 0;
+    line-height: 3.0rem;
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* Content */
+
+.soiree {
+    width: 100%;
+}
+
+.soiree-content {
+    padding: 1.0rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    text-align: justify;
+    font-family: 'Bookman Old Style', serif;
+    font-size: large;
+}
