@@ -24,8 +24,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>Random</title>
+
+    <script type="text/javascript" src="http://cdn.mindsmine.shaiksphere.com/mindsmine-js-3.0.0.min.js"></script>
+    <script type="text/javascript" src="resources/js/index.js"></script>
+    <script type="text/javascript" src="resources/js/highlight.js"></script>
 </head>
-<body>
+<body onload="ShowSource('pageSource');">
 List of random collection of code
 <ul>
     <li>
@@ -35,6 +39,31 @@ List of random collection of code
         Example implementation for the <a target="_blank" href="http://www.chartjs.org">Chart.js</a> library -
         <a href="waiting">representation of the waiting time for residency</a>.
     </li>
+    <li>
+        Enter a paragraph of text in the below <em>textarea</em> and click on the <strong>Submit</strong> button. If
+        proper text is entered, the paragraph will be redisplayed underneath the <em>textarea</em> with the palindrome
+        words <span style="background-color: yellow;">highlighted</span>. If the paragraph is improper text, appropriate
+        text will be displayed instead.
+        <form id="formOne" onsubmit="HighlightExample.onFormSubmit('formOneTextArea', 'formOneOutput'); return false;">
+            <textarea id="formOneTextArea" cols="50" rows="6" style="resize: none;" required="required"
+                      placeholder="Enter the paragraph of text"></textarea>
+            <br />
+            <br />
+            <button type="button" onclick="HighlightExample.onFormReset('formOne', 'formOneOutput'); return false;">Reset</button>
+            &nbsp;&nbsp;
+            <button type="submit">Submit</button>
+            <br />
+            <br />
+            <div id="formOneOutput"></div>
+        </form>
+    </li>
 </ul>
+<br />
+<hr />
+<br />
+<details>
+    <summary><strong>Page Source Code</strong></summary>
+    <pre id="pageSource"></pre>
+</details>
 </body>
 </html>
