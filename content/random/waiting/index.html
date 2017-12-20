@@ -23,18 +23,33 @@
     <meta name="author" content="Mohammed Shaik Hussain Ali" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Random</title>
+    <title>Waiting</title>
+
+    <link rel="stylesheet" href="../resources/css/index.css">
+
+    <script type="text/javascript" src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    <script type="text/javascript" src="../resources/js/chart.js"></script>
 </head>
-<body>
-List of random collection of code
-<ul>
-    <li>
-        Example for a JavaScript countdown meter - <a href="patience">counting until the next presidential elections</a>.
-    </li>
-    <li>
-        Example implementation for the <a target="_blank" href="http://www.chartjs.org">Chart.js</a> library -
-        <a href="waiting">representation of the waiting time for residency</a>.
-    </li>
-</ul>
+<body onload="drawChart()">
+<div style="width: 100%;">
+    <canvas id="waitingCanvas"></canvas>
+</div>
+<hr />
+<div id="mainContent">
+    <details>
+        <table style="width: 100%;" id="contentTable">
+            <thead>
+            <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Priority Date</th>
+                <th>Number of Days</th>
+            </tr>
+            </thead>
+            <tbody id="contentTableBody"></tbody>
+        </table>
+    </details>
+</div>
 </body>
 </html>
