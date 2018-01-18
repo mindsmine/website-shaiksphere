@@ -79,7 +79,8 @@ const DATA_SET = {
         December: "11/1/2008"
     },
     2018: {
-        January: "11/22/2008"
+        January: "11/22/2008",
+        February: "12/8/2008"
     }
 };
 
