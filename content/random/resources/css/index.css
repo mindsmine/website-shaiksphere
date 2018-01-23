@@ -14,6 +14,56 @@
  limitations under the License.
  */
 
+* {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 100%;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+header {
+    height: 3.0rem;
+    line-height: 3.0rem;
+    font-size: 1.875rem;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    text-align: center;
+}
+
+footer {
+    display: block;
+    font-size: 0.688rem;
+    width: 100%;
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    border-width: 0.063rem;
+    border-color: white;
+    border-style: solid;
+    border-radius: 0.625rem;
+    line-height: 3.125rem;
+    background-color: black;
+    color: white;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
 table {
     border-collapse: collapse;
 }
