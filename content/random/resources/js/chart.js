@@ -98,54 +98,9 @@ const _getChartTitle = function (latestPriorityDate) {
         return "NO MORE WAITING!!!";
     }
 
-    let years = FINAL_PRIORITY_DATE_MOMENT.year() - LATEST_PRIORITY_DATE_MOMENT.year();
-    let months = FINAL_PRIORITY_DATE_MOMENT.month() - LATEST_PRIORITY_DATE_MOMENT.month();
-    let days = FINAL_PRIORITY_DATE_MOMENT.date() - LATEST_PRIORITY_DATE_MOMENT.date();
-    let hours = FINAL_PRIORITY_DATE_MOMENT.hour() - LATEST_PRIORITY_DATE_MOMENT.hour();
-    let minutes = FINAL_PRIORITY_DATE_MOMENT.minute() - LATEST_PRIORITY_DATE_MOMENT.minute();
-    let seconds = FINAL_PRIORITY_DATE_MOMENT.second() - LATEST_PRIORITY_DATE_MOMENT.second();
+    const difference = moment.preciseDiff(FINAL_PRIORITY_DATE_MOMENT, LATEST_PRIORITY_DATE_MOMENT);
 
-    if (seconds < 0) {
-        seconds = 60 + seconds;
-        minutes--;
-    }
-
-    if (minutes < 0) {
-        minutes = 60 + minutes;
-        hours--;
-    }
-
-    if (hours < 0) {
-        hours = 24 + hours;
-        days--;
-    }
-
-    if (days < 0) {
-        let _daysInLastFullMonth = moment(
-            FINAL_PRIORITY_DATE_MOMENT.year() + "-" + (FINAL_PRIORITY_DATE_MOMENT.month() + 1),
-            "YYYY-MM"
-        ).subtract(
-            1,
-            "months"
-        ).daysInMonth();
-
-        days = _daysInLastFullMonth + days;
-
-        let __diff = LATEST_PRIORITY_DATE_MOMENT.date() - _daysInLastFullMonth;
-
-        if (__diff > 0) {
-            days += __diff;
-        }
-
-        months--;
-    }
-
-    if (months < 0) {
-        months = 12 + months;
-        years--;
-    }
-
-    return `Current Wait Time = ${years} years ${months} months ${days} days`;
+    return `Current Wait Time = ${difference}`;
 };
 
 const drawChart = function () {
