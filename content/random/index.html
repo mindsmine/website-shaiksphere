@@ -33,41 +33,34 @@
     <script type="text/javascript" src="resources/js/index.js"></script>
     <script type="text/javascript" src="resources/js/highlight.js"></script>
 </head>
-<body onload="Countdown(2020, 11, 3, 'Time for new President!', 'duration');ShowSource('pageSource');">
+<body onload="Countdown(2020, 11, 3, 'Time for new President!', 'duration'); ShowSource('pageSource');">
 <h1>Random Collection of Code Samples</h1>
 <h2>Countdown</h2>
 There are <span id="duration"></span> until the next presidential election.
 <br />
 <hr />
+<h2>Chart.js</h2>
+Example implementation for the <a target="_blank" href="http://www.chartjs.org">Chart.js</a> library -
+<a href="waiting">representation of the waiting time for residency</a>.
 <br />
-List of random collection of code
-<ul>
-    <li>
-        Example for a JavaScript countdown meter - <a href="patience">counting until the next presidential elections</a>.
-    </li>
-    <li>
-        Example implementation for the <a target="_blank" href="http://www.chartjs.org">Chart.js</a> library -
-        <a href="waiting">representation of the waiting time for residency</a>.
-    </li>
-    <li>
-        Enter a paragraph of text in the below <em>textarea</em> and click on the <strong>Submit</strong> button. If
-        proper text is entered, the paragraph will be redisplayed underneath the <em>textarea</em> with the palindrome
-        words <span style="background-color: yellow;">highlighted</span>. If the paragraph is improper text, appropriate
-        text will be displayed instead.
-        <form id="formOne" onsubmit="HighlightExample.onFormSubmit('formOneTextArea', 'formOneOutput'); return false;">
-            <textarea id="formOneTextArea" cols="50" rows="6" style="resize: none;" required="required"
-                      placeholder="Enter the paragraph of text"></textarea>
-            <br />
-            <br />
-            <button type="button" onclick="HighlightExample.onFormReset('formOne', 'formOneOutput'); return false;">Reset</button>
-            &nbsp;&nbsp;
-            <button type="submit">Submit</button>
-            <br />
-            <br />
-            <div id="formOneOutput"></div>
-        </form>
-    </li>
-</ul>
+<hr />
+<h2>Palindrome</h2>
+Enter a paragraph of text in the below <em>textarea</em> and click on the <strong>Submit</strong> button. If proper text
+is entered, the paragraph will be redisplayed underneath the <em>textarea</em> with the palindrome words
+<span style="background-color: yellow;">highlighted</span>. If the paragraph is improper text, appropriate text will be
+displayed instead.
+<form id="formOne" onsubmit="HighlightExample.onFormSubmit('formOneTextArea', 'formOneOutput'); return false;">
+    <textarea id="formOneTextArea" cols="50" rows="6" style="resize: none;" required="required"
+              placeholder="Enter the paragraph of text"></textarea>
+    <br />
+    <br />
+    <button type="button" onclick="HighlightExample.onFormReset('formOne', 'formOneOutput'); return false;">Reset</button>
+    &nbsp;&nbsp;
+    <button type="submit">Submit</button>
+    <br />
+    <br />
+    <div id="formOneOutput"></div>
+</form>
 <br />
 <hr />
 <br />
