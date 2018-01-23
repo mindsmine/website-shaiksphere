@@ -19,3 +19,20 @@ const ShowSource = function (divID = "") {
         document.getElementsByTagName("html")[0].innerHTML
     );
 };
+
+const Countdown = function (year, month, day, finalMsg, elementID) {
+    const m1 = moment();
+    const m2 = moment(`${year}-${month}-${day} 00:00:00`,'YYYY-MM-DD HH:mm:ss');
+
+    const difference = moment.preciseDiff(m1, m2, true);
+
+    if (difference.firstDateWasLater) {
+        document.getElementById(elementID).innerHTML = finalMsg;
+
+        return 0;
+    }
+
+    document.getElementById(elementID).innerHTML = moment.preciseDiff(m1, m2);
+
+    window.setTimeout(Countdown, 1000, year, month, day, finalMsg, elementID);
+};
