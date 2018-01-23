@@ -14,6 +14,14 @@
  limitations under the License.
  */
 
+const FORMAT_DATE_TIME = "YYYY-MM-DD";
+
+const OnLoad = function () {
+    Countdown(2020, 11, 3, "Time for new President!", "duration");
+    TimeSince(2016, 3, 7, "since");
+    ShowSource("pageSource");
+};
+
 const ShowSource = function (divID = "") {
     document.getElementById(divID).innerHTML = mindsmine.String.htmlEncode(
         document.getElementsByTagName("html")[0].innerHTML
@@ -22,7 +30,7 @@ const ShowSource = function (divID = "") {
 
 const Countdown = function (year, month, day, finalMsg, elementID) {
     const m1 = moment();
-    const m2 = moment(`${year}-${month}-${day} 00:00:00`,'YYYY-MM-DD HH:mm:ss');
+    const m2 = moment(`${year}-${month}-${day}`, FORMAT_DATE_TIME).startOf("day");
 
     const difference = moment.preciseDiff(m1, m2, true);
 
@@ -35,4 +43,11 @@ const Countdown = function (year, month, day, finalMsg, elementID) {
     document.getElementById(elementID).innerHTML = moment.preciseDiff(m1, m2);
 
     window.setTimeout(Countdown, 1000, year, month, day, finalMsg, elementID);
+};
+
+const TimeSince = function (year, month, day, elementID) {
+    const m1 = moment(`${year}-${month}-${day}`, FORMAT_DATE_TIME).startOf("day");
+    const m2 = moment().startOf("day");
+
+    document.getElementById(elementID).innerHTML = moment.preciseDiff(m1, m2);
 };
