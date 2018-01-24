@@ -85,20 +85,17 @@ const DATA_SET = {
 };
 
 const _getChartTitle = function (latestPriorityDate) {
-    const LATEST_PRIORITY_DATE_MOMENT = moment(latestPriorityDate, DATE_FORMAT);
+    const latestPriorityDateMoment = moment(latestPriorityDate, DATE_FORMAT);
 
-    // Shift the timezone of Latest Priority Date to that of Final Priority Date
-    LATEST_PRIORITY_DATE_MOMENT.add(FINAL_PRIORITY_DATE_MOMENT.utcOffset() - LATEST_PRIORITY_DATE_MOMENT.utcOffset(), "minutes");
-
-    if (LATEST_PRIORITY_DATE_MOMENT.isSame(FINAL_PRIORITY_DATE_MOMENT)) {
-        return "AMAZING! Magically, the priority dates are the same!!!";
-    }
-
-    if (LATEST_PRIORITY_DATE_MOMENT.isAfter(FINAL_PRIORITY_DATE_MOMENT)) {
+    if (moment.preciseDiff(latestPriorityDateMoment, FINAL_PRIORITY_DATE_MOMENT, true).firstDateWasLater) {
         return "NO MORE WAITING!!!";
     }
 
-    const difference = moment.preciseDiff(FINAL_PRIORITY_DATE_MOMENT, LATEST_PRIORITY_DATE_MOMENT);
+    const difference = moment.preciseDiff(latestPriorityDateMoment, FINAL_PRIORITY_DATE_MOMENT);
+
+    if (mindsmine.String.isEmpty(difference)) {
+        return "AMAZING! Magically, the priority dates are the same!!!";
+    }
 
     return `Current Wait Time = ${difference}`;
 };

@@ -63,16 +63,3 @@ button:hover {
     color: black;
     cursor: pointer;
 }
-
-table {
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 1px solid #DDDDDD;
-    padding: 7px 10px;
-}
-
-th {
-    background-color: #F0F0F0;
-}
