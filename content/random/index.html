@@ -28,16 +28,49 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script type="text/javascript" src="resources/3rdparty/moment-precise-range.js"></script>
 
-    <script type="text/javascript" src="http://cdn.mindsmine.shaiksphere.com/mindsmine-js-3.0.0.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mindsmine.shaiksphere.com/mindsmine-js-3.1.0.min.js"></script>
 
     <script type="text/javascript" src="resources/js/index.js"></script>
     <script type="text/javascript" src="resources/js/highlight.js"></script>
+
+    <link rel="stylesheet" href="resources/css/index.css" />
 </head>
 <body onload="OnLoad();">
 <h1>Random Collection of Code Samples</h1>
 <h2>Countdown</h2>
-There are <span id="duration"></span> until the next presidential election.
-<br />
+<table>
+    <thead>
+    <tr>
+        <th>Event</th>
+        <th>Countdown</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a target="_blank" href="https://tokyo2020.org/en">Summer 2020 Olympics</a> in Tokyo, Japan</td>
+        <td><span id="summer2020"></span></td>
+    </tr>
+    <tr>
+        <td>
+            <a target="_blank" href="https://en.wikipedia.org/wiki/United_States_presidential_election,_2020">2020 Presidential</a>
+            elections
+        </td>
+        <td><span id="president2020"></span></td>
+    </tr>
+    <tr>
+        <td><a target="_blank" href="http://www.beijing2022.cn/en">Winter 2022 Olympics</a> in Beijing, China</td>
+        <td><span id="winter2022"></span></td>
+    </tr>
+    <tr>
+        <td><a target="_blank" href="http://www.paris2024.org/en">Summer 2024 Olympics</a> in Paris, France</td>
+        <td><span id="summer2024"></span></td>
+    </tr>
+    <tr>
+        <td><a target="_blank" href="https://la28.org">Summer 2028 Olympics</a> in Los Angeles, USA</td>
+        <td><span id="summer2028"></span></td>
+    </tr>
+    </tbody>
+</table>
 <br />
 <hr />
 <h2>Chart.js</h2>

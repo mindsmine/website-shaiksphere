@@ -17,7 +17,12 @@
 const FORMAT_DATE_TIME = "YYYY-MM-DD";
 
 const OnLoad = function () {
-    Countdown(2020, 11, 3, "Time for new President!", "duration");
+    Countdown(2020, 7, 24, "Time for Summer 2020 Olympics!", "summer2020");
+    Countdown(2020, 11, 3, "Time for new President!", "president2020");
+    Countdown(2022, 2, 4, "Time for Winter 2022 Olympics!", "winter2022");
+    Countdown(2024, 7, 26, "Time for Summer 2024 Olympics!", "summer2024");
+    Countdown(2028, 7, 21, "Time for Summer 2024 Olympics!", "summer2028");
+
     TimeSince(2016, 3, 7, "since");
     ShowSource("pageSource");
 };
