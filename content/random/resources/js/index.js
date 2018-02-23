@@ -23,7 +23,7 @@ const OnLoad = function () {
     Countdown(2024, 7, 26, "Time for Summer 2024 Olympics!", "summer2024");
     Countdown(2028, 7, 21, "Time for Summer 2024 Olympics!", "summer2028");
 
-    TimeSince(2016, 3, 7, "since");
+    TimeSince(2018, 2, 20, "since");
     ShowSource("pageSource");
 };
 
