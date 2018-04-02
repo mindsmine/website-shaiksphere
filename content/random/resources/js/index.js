@@ -24,6 +24,7 @@ const OnLoad = function () {
     Countdown(2028, 7, 21, "Time for Summer 2024 Olympics!", "summer2028");
 
     TimeSince(2018, 2, 20, "since");
+    TimeSince(2008, 6, 16, "industry");
     ShowSource("pageSource");
 };
 
