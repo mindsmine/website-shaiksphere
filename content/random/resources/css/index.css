@@ -34,3 +34,7 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: transparent;
 }
+
+.special {
+    color: red;
+}
