@@ -84,7 +84,8 @@ const DATA_SET = {
         March: "12/15/2008",
         April: "12/22/2008",
         May: "12/22/2008",
-        June: "12/26/2008"
+        June: "12/26/2008",
+        July: "03/15/2009"
     }
 };
 
@@ -108,7 +109,7 @@ const drawChart = function () {
     const DATA_SET_ARRAY = [];
     const TABLE_BODY = document.getElementById("contentTable").tBodies.namedItem("contentTableBody");
 
-    Object.keys(DATA_SET).map(function (item_year) {
+    Object.keys(DATA_SET).map(item_year => {
         let __rowCount = 0;
         let __item_months = Object.keys(DATA_SET[item_year]);
 
@@ -120,7 +121,7 @@ const drawChart = function () {
 
         _tr.appendChild(_td);
 
-        __item_months.map(function (item_month) {
+        __item_months.map(item_month => {
             if (__rowCount > 0) {
                 _tr = document.createElement("tr");
             }
@@ -159,14 +160,14 @@ const drawChart = function () {
     let config = {
         type: "line",
         data: {
-            labels: DATA_SET_ARRAY.map(function (__dataArr) {
+            labels: DATA_SET_ARRAY.map(__dataArr => {
                 return __dataArr[0];
             }),
             datasets: [{
                 label: "Number of Days",
                 backgroundColor: "rgb(255, 0, 0)",
                 borderColor: "rgb(255, 0, 0)",
-                data: DATA_SET_ARRAY.map(function (__dataArr) {
+                data: DATA_SET_ARRAY.map(__dataArr => {
                     return __dataArr[2];
                 }),
                 fill: false
@@ -196,5 +197,5 @@ const drawChart = function () {
     };
 
     let ctx = document.getElementById("waitingCanvas").getContext("2d");
-    let myChart = new Chart(ctx, config);
+    new Chart(ctx, config);
 };
