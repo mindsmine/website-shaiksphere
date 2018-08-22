@@ -86,7 +86,8 @@ const DATA_SET = {
         May: "12/22/2008",
         June: "12/26/2008",
         July: "03/15/2009",
-        August: "03/15/2009"
+        August: "03/15/2009",
+        September: "01/01/2007"
     }
 };
 
@@ -103,7 +104,7 @@ const _getChartTitle = function (latestPriorityDate) {
         return "AMAZING! Magically, the priority dates are the same!!!";
     }
 
-    return `Minimum Wait Time = ${difference}`;
+    return `Crude Minimum Wait Time = ${difference}`;
 };
 
 const drawChart = function () {
