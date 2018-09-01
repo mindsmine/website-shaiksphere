@@ -28,14 +28,14 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script type="text/javascript" src="resources/3rdparty/moment-precise-range.js"></script>
 
-    <script type="text/javascript" src="http://cdn.mindsmine.shaiksphere.com/mindsmine-js-3.1.0.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mindsmine.shaiksphere.com/mindsmine-js-3.5.0.min.js"></script>
 
     <script type="text/javascript" src="resources/js/index.js"></script>
     <script type="text/javascript" src="resources/js/highlight.js"></script>
 
     <link rel="stylesheet" href="resources/css/index.css" />
 </head>
-<body onload="OnLoad();">
+<body onload="OnLoad(['summer2020', 'president2020', 'winter2022', 'summer2024', 'summer2028'], ['since', 'industry'])">
 <h1>Random Collection of Code Samples</h1>
 <h2>Countdown</h2>
 <table>
@@ -48,26 +48,41 @@
     <tbody>
     <tr>
         <td><a target="_blank" href="https://tokyo2020.org/en">Summer 2020 Olympics</a> in Tokyo, Japan</td>
-        <td><span id="summer2020"></span></td>
+        <td>
+            <span id="summer2020" data-countdown-year="2020" data-countdown-month="7" data-countdown-date="24"
+                  data-countdown-finalMsg="Time for Summer 2020 Olympics!"></span>
+        </td>
     </tr>
     <tr>
         <td>
             <a target="_blank" href="https://en.wikipedia.org/wiki/United_States_presidential_election,_2020">2020 Presidential</a>
             elections
         </td>
-        <td><span id="president2020"></span></td>
+        <td>
+            <span id="president2020" data-countdown-year="2020" data-countdown-month="11" data-countdown-date="3"
+                  data-countdown-finalMsg="Time for new President!"></span>
+        </td>
     </tr>
     <tr>
         <td><a target="_blank" href="http://www.beijing2022.cn/en">Winter 2022 Olympics</a> in Beijing, China</td>
-        <td><span id="winter2022"></span></td>
+        <td>
+            <span id="winter2022" data-countdown-year="2022" data-countdown-month="2" data-countdown-date="4"
+                  data-countdown-finalMsg="Time for Winter 2022 Olympics!"></span>
+        </td>
     </tr>
     <tr>
         <td><a target="_blank" href="http://www.paris2024.org/en">Summer 2024 Olympics</a> in Paris, France</td>
-        <td><span id="summer2024"></span></td>
+        <td>
+            <span id="summer2024" data-countdown-year="2024" data-countdown-month="7" data-countdown-date="26"
+                  data-countdown-finalMsg="Time for Summer 2024 Olympics!"></span>
+        </td>
     </tr>
     <tr>
         <td><a target="_blank" href="https://la28.org">Summer 2028 Olympics</a> in Los Angeles, USA</td>
-        <td><span id="summer2028"></span></td>
+        <td>
+            <span id="summer2028" data-countdown-year="2028" data-countdown-month="7" data-countdown-date="21"
+                  data-countdown-finalMsg="Time for Summer 2028 Olympics!"></span>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -106,9 +121,9 @@ displayed instead.
 <br />
 <details>
     <summary><strong>Page Source Code</strong></summary>
-    <small id="since"></small>
+    <small id="since" data-countdown-year="2018" data-countdown-month="2" data-countdown-date="20"></small>
     <br />
-    <small id="industry"></small>
+    <small id="industry" data-countdown-year="2008" data-countdown-month="6" data-countdown-date="16"></small>
     <br />
     <br />
     <pre id="pageSource"></pre>
