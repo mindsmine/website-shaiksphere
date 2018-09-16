@@ -16,30 +16,10 @@
 
 class RESTClient {
     static onAuthorizationClick() {
-        const authorizationInputField = document.getElementById("authorization");
-
-        const auth_row_1 = document.getElementById("auth_row_1");
-        const auth_row_2 = document.getElementById("auth_row_2");
-        const auth_row_3 = document.getElementById("auth_row_3");
-
-        const auth_basic_username = document.getElementById("auth_basic_username");
-        const auth_basic_password = document.getElementById("auth_basic_password");
-
-        console.log("I AM HERE");
-        console.log(authorizationInputField.checked);
-
-        if (authorizationInputField.checked === true) {
-            auth_row_1.style.visibility = "visible";
-            auth_row_2.style.visibility = "visible";
-            auth_row_3.style.visibility = "visible";
-            auth_basic_username.disabled = false;
-            auth_basic_password.disabled = false;
+        if (document.getElementById("authorization").checked === true) {
+            this.changeAuthSection("visible", false);
         } else {
-            auth_row_1.style.visibility = "hidden";
-            auth_row_2.style.visibility = "hidden";
-            auth_row_3.style.visibility = "hidden";
-            auth_basic_username.disabled = true;
-            auth_basic_password.disabled = true;
+            this.changeAuthSection("hidden", true);
         }
     }
 
@@ -52,6 +32,7 @@ class RESTClient {
         const formOneTextAreaOutputField = document.getElementById("formOneTextAreaOutput");
 
         let headers = null;
+        let withCredentials = false;
 
         if (authorizationInputField.checked === true) {
             const auth_basic_string = `${auth_basic_username.value}:${auth_basic_password.value}`;
@@ -60,18 +41,30 @@ class RESTClient {
             headers = {
                 Authorization: `Basic ${auth_basic_token}`
             };
+
+            withCredentials = true;
         }
 
         mindsmine.Ajax.request(
             httpMethodInputField.value,
             urlEndpointInputField.value,
             {
-                headers: headers
+                headers: headers,
+                withCredentials: withCredentials
             }
         ).then(response => {
             formOneTextAreaOutputField.value = JSON.stringify(JSON.parse(response.responseText), null, 2);
         }).catch(response => {
             formOneTextAreaOutputField.value = `Error: ${response.responseText} (status code = ${response.status})`;
         });
+    }
+
+    static changeAuthSection(_visibility, _disabled) {
+        document.getElementById("auth_row_1").style.visibility = _visibility;
+        document.getElementById("auth_row_2").style.visibility = _visibility;
+        document.getElementById("auth_row_3").style.visibility = _visibility;
+
+        document.getElementById("auth_basic_username").disabled = _disabled;
+        document.getElementById("auth_basic_password").disabled = _disabled;
     }
 }

@@ -23,7 +23,7 @@
     <meta name="author" content="Mohammed Shaik Hussain Ali" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>REST Client</title>
+    <title>REST Client | 1.0.1</title>
 
     <script type="text/javascript" src="http://cdn.mindsmine.shaiksphere.com/mindsmine-js-3.1.0.min.js"></script>
     <script type="text/javascript" src="resources/js/index.js"></script>
@@ -36,7 +36,7 @@
         <tbody>
         <tr>
             <td class="cell_left">
-                <input id="authorization" type="checkbox" onclick="RESTClient.onAuthorizationClick();" />
+                <input id="authorization" type="checkbox" onchange="RESTClient.onAuthorizationClick();" />
             </td>
             <td>
                 <label for="authorization">Authorization</label>
@@ -100,7 +100,7 @@
         </tr>
         <tr>
             <td colspan="2" style="text-align: center;">
-                <textarea id="formOneTextAreaOutput" cols="80" rows="20" disabled="disabled"></textarea>
+                <textarea id="formOneTextAreaOutput" title="" cols="80" rows="20" readonly="readonly"></textarea>
             </td>
         </tr>
         </tfoot>
