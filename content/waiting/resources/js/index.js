@@ -88,7 +88,8 @@ const DATA_SET = {
         July: "03/15/2009",
         August: "03/15/2009",
         September: "01/01/2007",
-        October: "03/26/2009"
+        October: "03/26/2009",
+        November: "03/26/2009"
     }
 };
 
