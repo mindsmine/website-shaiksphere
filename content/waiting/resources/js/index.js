@@ -91,6 +91,9 @@ const DATA_SET = {
         October: "03/26/2009",
         November: "03/26/2009",
         December: "04/01/2009"
+    },
+    2019: {
+        January: "04/01/2009"
     }
 };
 
