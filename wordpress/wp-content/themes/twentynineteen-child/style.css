@@ -1,0 +1,29 @@
+/*
+Theme Name:  Twenty Nineteen Child
+Theme URI:   https://github.com/WordPress/twentynineteen
+Author:      Mohammed Shaik Hussain Ali
+Author URI:  https://shaiksphere.com
+Description: Child theme for the Twenty Nineteen theme.
+Template:    twentynineteen
+Version:     0.1.0
+*/
+
+@import url("../twentynineteen/style.css");
+
+.shaiksphere-wp-subtitle,
+.blog-post-subheader {
+    text-align: justify;
+    text-justify: inter-word;
+    font-style: italic;
+}
+
+.shaiksphere-wp-body,
+.blog-post-div {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.single .byline,
+.group-blog .byline {
+    display: none;
+}
