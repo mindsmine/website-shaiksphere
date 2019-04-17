@@ -120,6 +120,7 @@ const _getChartTitle = function (latestPriorityDate) {
 const drawChart = function () {
     const DATA_SET_ARRAY = [];
     const TABLE_BODY = document.getElementById("contentTable").tBodies.namedItem("contentTableBody");
+    let LATEST_PRIORITY_DATE = Date.now();
 
     Object.keys(DATA_SET).map(item_year => {
         let __rowCount = 0;
@@ -161,9 +162,10 @@ const drawChart = function () {
 
             __rowCount++;
 
+            LATEST_PRIORITY_DATE = item_date;
+
             DATA_SET_ARRAY.push([
                 `${item_year} - ${item_month}`,
-                item_date,
                 numOfDays
             ]);
         });
@@ -177,10 +179,10 @@ const drawChart = function () {
             }),
             datasets: [{
                 label: "Number of Days",
-                backgroundColor: "rgb(255, 0, 0)",
-                borderColor: "rgb(255, 0, 0)",
+                backgroundColor: "rgba(255, 0, 0, 1)",
+                borderColor: "rgba(255, 0, 0, 1)",
                 data: DATA_SET_ARRAY.map(__dataArr => {
-                    return __dataArr[2];
+                    return __dataArr[1];
                 }),
                 fill: false
             }]
@@ -189,17 +191,25 @@ const drawChart = function () {
             responsive: true,
             title: {
                 display: true,
-                text: _getChartTitle(DATA_SET_ARRAY[DATA_SET_ARRAY.length - 1][1])
+                text: _getChartTitle(LATEST_PRIORITY_DATE)
             },
             legend: {
                 display: false
             },
             scales: {
                 xAxes: [{
-                    display: true
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Month"
+                    }
                 }],
                 yAxes: [{
                     display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Days"
+                    },
                     ticks: {
                         beginAtZero: true
                     }
