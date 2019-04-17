@@ -17,7 +17,7 @@ if (typeof moment === "undefined" && typeof require === 'function') {
         minutes: 'minutes',
         second: 'second',
         seconds: 'seconds',
-        delimiter: ' '
+        delimiter: ', '
     };
 
     function pluralize(num, word) {
