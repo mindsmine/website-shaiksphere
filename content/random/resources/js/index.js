@@ -14,7 +14,7 @@
  limitations under the License.
  */
 
-const FORMAT_DATE_TIME = "YYYY-MM-DD";
+const DATE_FORMAT = "MM/DD/YYYY";
 
 /**
  *
@@ -28,22 +28,19 @@ const OnLoad = function (countdownElementIDs, timeSinceElementIDs) {
     countdownElementIDs.forEach(elementID => {
         const element = window.document.getElementById(elementID);
 
-        const _year = element.getAttribute("data-countdown-year") || now.getFullYear();
-        const _month = element.getAttribute("data-countdown-month") || now.getMonth();
-        const _day = element.getAttribute("data-countdown-date") || now.getDate();
+        const _date = element.getAttribute("data-countdown-date") || now;
+
         const _finalMsg = element.getAttribute("data-countdown-finalMsg") || "Final Message Not Available!";
 
-        Countdown(_year, _month, _day, _finalMsg, elementID);
+        Countdown(_date, _finalMsg, elementID);
     });
 
     timeSinceElementIDs.forEach(elementID => {
         const element = window.document.getElementById(elementID);
 
-        const _year = element.getAttribute("data-countdown-year") || now.getFullYear();
-        const _month = element.getAttribute("data-countdown-month") || now.getMonth();
-        const _day = element.getAttribute("data-countdown-date") || now.getDate();
+        const _date = element.getAttribute("data-countdown-date") || now;
 
-        TimeSince(_year, _month, _day, elementID);
+        TimeSince(_date, elementID);
     });
 
     ShowSource("pageSource");
@@ -55,9 +52,9 @@ const ShowSource = function (divID = "") {
     );
 };
 
-const Countdown = function (year, month, day, finalMsg, elementID) {
+const Countdown = function (date, finalMsg, elementID) {
     const m1 = moment();
-    const m2 = moment(`${year}-${month}-${day}`, FORMAT_DATE_TIME).startOf("day");
+    const m2 = moment(date, DATE_FORMAT).startOf("day");
 
     const difference = moment.preciseDiff(m1, m2, true);
 
@@ -69,11 +66,11 @@ const Countdown = function (year, month, day, finalMsg, elementID) {
 
     window.document.getElementById(elementID).innerHTML = moment.preciseDiff(m1, m2);
 
-    window.setTimeout(Countdown, 1000, year, month, day, finalMsg, elementID);
+    window.setTimeout(Countdown, 1000, date, finalMsg, elementID);
 };
 
-const TimeSince = function (year, month, day, elementID) {
-    const m1 = moment(`${year}-${month}-${day}`, FORMAT_DATE_TIME).startOf("day");
+const TimeSince = function (date, elementID) {
+    const m1 = moment(date, DATE_FORMAT).startOf("day");
     const m2 = moment().startOf("day");
 
     window.document.getElementById(elementID).innerHTML = moment.preciseDiff(m1, m2);
