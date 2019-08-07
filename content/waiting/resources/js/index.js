@@ -104,21 +104,26 @@ const DATA_SET = {
     }
 };
 
-const _getChartTitle = function (latestPriorityDate, earlierPriorityDate) {
-    const latestPriorityDateMoment = moment(latestPriorityDate, DATE_FORMAT);
+const EARLIER_PRIORITY_DATE_MOMENT = moment("04/24/2009", DATE_FORMAT);
+const LATEST_PRIORITY_DATE_MOMENT = moment("05/02/2009", DATE_FORMAT);
 
-    if (moment.preciseDiff(latestPriorityDateMoment, FINAL_PRIORITY_DATE_MOMENT, true).firstDateWasLater) {
+// When was the last time the date changed
+const MOVEMENT_MONTHS = 1;
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Movement of dates in the above number of months
+const MOVEMENT_DAYS = Math.abs(LATEST_PRIORITY_DATE_MOMENT.diff(EARLIER_PRIORITY_DATE_MOMENT, "days"));
+
+const CHART_TITLE = (() => {
+    if (moment.preciseDiff(LATEST_PRIORITY_DATE_MOMENT, FINAL_PRIORITY_DATE_MOMENT, true).firstDateWasLater) {
         return "NO MORE WAITING!!!";
     }
 
-    const latestNumOfDays = FINAL_PRIORITY_DATE_MOMENT.diff(latestPriorityDateMoment, "days");
-    const earlierNumOfDays = FINAL_PRIORITY_DATE_MOMENT.diff(moment(earlierPriorityDate, DATE_FORMAT), "days");
-
-    // Movement of dates in ONE month
-    const __movement = Math.abs(latestNumOfDays - earlierNumOfDays);
-
     // Number of months needed to move the latest number of days
-    const pendingNumOfMonths = latestNumOfDays / __movement;
+    const pendingNumOfMonths = (FINAL_PRIORITY_DATE_MOMENT.diff(LATEST_PRIORITY_DATE_MOMENT, "days") * MOVEMENT_MONTHS) / MOVEMENT_DAYS;
 
     const difference = moment.preciseDiff(moment(), moment().add(pendingNumOfMonths, "months"));
 
@@ -127,13 +132,11 @@ const _getChartTitle = function (latestPriorityDate, earlierPriorityDate) {
     }
 
     return `Crude Minimum Wait Time = ${difference}`;
-};
+})();
 
-const drawChart = function () {
+const drawChart = () => {
     const DATA_SET_ARRAY = [];
     const TABLE_BODY = document.getElementById("contentTable").tBodies.namedItem("contentTableBody");
-    let EARLIER_PRIORITY_DATE = Date.now();
-    let LATEST_PRIORITY_DATE = Date.now();
 
     Object.keys(DATA_SET).map(item_year => {
         let __rowCount = 0;
@@ -175,12 +178,6 @@ const drawChart = function () {
 
             __rowCount++;
 
-            if (__rowCount === __item_months.length - 1) {
-                EARLIER_PRIORITY_DATE = item_date;
-            }
-
-            LATEST_PRIORITY_DATE = item_date;
-
             DATA_SET_ARRAY.push([
                 `${item_year} - ${item_month}`,
                 numOfDays
@@ -208,7 +205,7 @@ const drawChart = function () {
             responsive: true,
             title: {
                 display: true,
-                text: _getChartTitle(LATEST_PRIORITY_DATE, EARLIER_PRIORITY_DATE)
+                text: CHART_TITLE
             },
             legend: {
                 display: false
