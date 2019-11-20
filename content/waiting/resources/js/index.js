@@ -103,15 +103,16 @@ const DATA_SET = {
         August: "05/02/2009",
         September: "05/08/2009",
         October: "05/12/2009",
-        November: "05/13/2009"
+        November: "05/13/2009",
+        December: "05/15/2009"
     }
 };
 
-const EARLIER_PRIORITY_DATE_MOMENT = moment("05/08/2009", DATE_FORMAT);
-const LATEST_PRIORITY_DATE_MOMENT = moment("05/12/2009", DATE_FORMAT);
+const EARLIER_PRIORITY_DATE_MOMENT = moment("05/02/2009", DATE_FORMAT);
+const LATEST_PRIORITY_DATE_MOMENT = moment("05/15/2009", DATE_FORMAT);
 
 // When was the last time the date changed
-const MOVEMENT_MONTHS = 1;
+const MOVEMENT_MONTHS = 4;
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
