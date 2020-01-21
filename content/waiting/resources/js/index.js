@@ -107,15 +107,16 @@ const DATA_SET = {
         December: "05/15/2009"
     },
     2020: {
-        January: "05/18/2009"
+        January: "05/18/2009",
+        February: "05/19/2009"
     }
 };
 
 const EARLIER_PRIORITY_DATE_MOMENT = moment("05/02/2009", DATE_FORMAT);
-const LATEST_PRIORITY_DATE_MOMENT = moment("05/18/2009", DATE_FORMAT);
+const LATEST_PRIORITY_DATE_MOMENT = moment("05/19/2009", DATE_FORMAT);
 
 // When was the last time the date changed
-const MOVEMENT_MONTHS = 5;
+const MOVEMENT_MONTHS = 6;
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
