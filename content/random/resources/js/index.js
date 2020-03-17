@@ -20,9 +20,10 @@ const DATE_FORMAT = "MM/DD/YYYY";
  *
  * @param {Array} countdownElementIDs
  * @param {Array} timeSinceElementIDs
+ * @param {Array} durationElementIDs
  * @constructor
  */
-const OnLoad = function (countdownElementIDs, timeSinceElementIDs) {
+const OnLoad = function (countdownElementIDs, timeSinceElementIDs, durationElementIDs) {
     const now = new Date();
 
     countdownElementIDs.forEach(elementID => {
@@ -40,7 +41,16 @@ const OnLoad = function (countdownElementIDs, timeSinceElementIDs) {
 
         const _date = element.getAttribute("data-countdown-date") || now;
 
-        TimeSince(_date, elementID);
+        DisplayTimeSpan(_date, null, element);
+    });
+
+    durationElementIDs.forEach(elementID => {
+        const element = window.document.getElementById(elementID);
+
+        const _startDate = element.getAttribute("data-countdown-start-date") || now;
+        const _endDate = element.getAttribute("data-countdown-end-date") || now;
+
+        DisplayTimeSpan(_startDate, _endDate, element);
     });
 
     ShowSource("pageSource");
@@ -69,9 +79,16 @@ const Countdown = function (date, finalMsg, elementID) {
     window.setTimeout(Countdown, 1000, date, finalMsg, elementID);
 };
 
-const TimeSince = function (date, elementID) {
-    const m1 = moment(date, DATE_FORMAT).startOf("day");
-    const m2 = moment().startOf("day");
+/**
+ *
+ * @param {String} startDate
+ * @param {String} endDate
+ * @param {Element} element
+ * @constructor
+ */
+const DisplayTimeSpan = function (startDate, endDate = null, element) {
+    const m1 = moment(startDate, DATE_FORMAT).startOf("day");
+    const m2 = (endDate == null) ? moment().startOf("day") : moment(endDate, DATE_FORMAT).startOf("day");
 
-    window.document.getElementById(elementID).innerHTML = moment.preciseDiff(m1, m2);
+    element.innerHTML = moment.preciseDiff(m1, m2);
 };
