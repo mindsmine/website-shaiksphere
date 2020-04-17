@@ -1,0 +1,31 @@
+/*
+Theme Name:  Twenty Twenty Child
+Theme URI:   https://wordpress.org/themes/twentytwenty/
+Author:      Mohammed Shaik Hussain Ali
+Author URI:  https://shaiksphere.com
+Description: Child theme for the Twenty Twenty theme.
+Text Domain: twentytwenty
+Version:     0.1.0
+Requires at least: 4.7
+Requires PHP: 5.2.4
+*/
+
+@import url("../twentytwenty/style.css");
+
+.shaiksphere-wp-subtitle,
+.blog-post-subheader {
+    text-align: justify;
+    text-justify: inter-word;
+    font-style: italic;
+}
+
+.shaiksphere-wp-body,
+.blog-post-div {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.single .byline,
+.group-blog .byline {
+    display: none;
+}
