@@ -39,9 +39,9 @@ const OnLoad = function (countdownElementIDs, timeSinceElementIDs, durationEleme
     timeSinceElementIDs.forEach(elementID => {
         const element = window.document.getElementById(elementID);
 
-        const _date = element.getAttribute("data-countdown-date") || now;
+        const _startDate = element.getAttribute("data-countdown-start-date") || now;
 
-        DisplayTimeSpan(_date, null, element);
+        DisplayTimeSpan(_startDate, null, element);
     });
 
     durationElementIDs.forEach(elementID => {
