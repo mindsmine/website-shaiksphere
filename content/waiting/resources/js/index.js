@@ -112,15 +112,16 @@ const DATA_SET = {
         March: "05/22/2009",
         April: "05/25/2009",
         May: "06/02/2009",
-        June: "06/12/2009"
+        June: "06/12/2009",
+        July: "07/08/2009"
     }
 };
 
 const EARLIER_PRIORITY_DATE_MOMENT = moment(DATA_SET["2019"].August, DATE_FORMAT);
-const LATEST_PRIORITY_DATE_MOMENT = moment(DATA_SET["2020"].June, DATE_FORMAT);
+const LATEST_PRIORITY_DATE_MOMENT = moment(DATA_SET["2020"].July, DATE_FORMAT);
 
 // When was the last time the date changed
-const MOVEMENT_MONTHS = 10;
+const MOVEMENT_MONTHS = 11;
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
