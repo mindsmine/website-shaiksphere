@@ -15,7 +15,7 @@
  */
 
 const DATE_FORMAT = "MM/DD/YYYY";
-const FINAL_PRIORITY_DATE_MOMENT = moment("3/7/2013", DATE_FORMAT);
+// const FINAL_PRIORITY_DATE_MOMENT = moment("3/7/2013", DATE_FORMAT);
 
 const DATA_SET = {
     2013: {
@@ -114,15 +114,16 @@ const DATA_SET = {
         May: "06/02/2009",
         June: "06/12/2009",
         July: "07/08/2009",
-        August: "07/08/2009"
+        August: "07/08/2009",
+        September: "07/08/2009"
     }
 };
 
 const EARLIER_PRIORITY_DATE_MOMENT = moment(DATA_SET["2019"].August, DATE_FORMAT);
-const LATEST_PRIORITY_DATE_MOMENT = moment(DATA_SET["2020"].August, DATE_FORMAT);
+const LATEST_PRIORITY_DATE_MOMENT = moment(DATA_SET["2020"].September, DATE_FORMAT);
 
 // When was the last time the date changed
-const MOVEMENT_MONTHS = 12;
+const MOVEMENT_MONTHS = 13;
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -131,24 +132,34 @@ const MOVEMENT_MONTHS = 12;
 // Movement of dates in the above number of months
 const MOVEMENT_DAYS = Math.abs(LATEST_PRIORITY_DATE_MOMENT.diff(EARLIER_PRIORITY_DATE_MOMENT, "days"));
 
-const CHART_TITLE = (() => {
-    if (moment.preciseDiff(LATEST_PRIORITY_DATE_MOMENT, FINAL_PRIORITY_DATE_MOMENT, true).firstDateWasLater) {
-        return "NO MORE WAITING!!!";
-    }
-
-    // Number of months needed to move the latest number of days
-    const pendingNumOfMonths = (FINAL_PRIORITY_DATE_MOMENT.diff(LATEST_PRIORITY_DATE_MOMENT, "days") * MOVEMENT_MONTHS) / MOVEMENT_DAYS;
-
-    const difference = moment.preciseDiff(moment(), moment().add(pendingNumOfMonths, "months"));
-
-    if (mindsmine.String.isEmpty(difference)) {
-        return "AMAZING! Magically, the priority dates are the same!!!";
-    }
-
-    return `Crude Minimum Wait Time = ${difference}`;
-})();
-
 const drawChart = () => {
+    let PRIORITY_DATE_STRING = "3/7/2013";
+
+    const paramFor = mindsmine.URL.getQueryParameter(window.location.href, "for");
+
+    if (mindsmine.String.areEqual(paramFor, "Sarfraz")) {
+        PRIORITY_DATE_STRING = "12/12/2019";
+    }
+
+    const FINAL_PRIORITY_DATE_MOMENT = moment(PRIORITY_DATE_STRING, DATE_FORMAT);
+
+    const CHART_TITLE = (() => {
+        if (moment.preciseDiff(LATEST_PRIORITY_DATE_MOMENT, FINAL_PRIORITY_DATE_MOMENT, true).firstDateWasLater) {
+            return "NO MORE WAITING!!!";
+        }
+    
+        // Number of months needed to move the latest number of days
+        const pendingNumOfMonths = (FINAL_PRIORITY_DATE_MOMENT.diff(LATEST_PRIORITY_DATE_MOMENT, "days") * MOVEMENT_MONTHS) / MOVEMENT_DAYS;
+        
+        const difference = moment.preciseDiff(moment(), moment().add(pendingNumOfMonths, "months"));
+
+        if (mindsmine.String.isEmpty(difference)) {
+            return "AMAZING! Magically, the priority dates are the same!!!";
+        }
+
+        return `Crude Minimum Wait Time = ${difference}`;
+    })();
+
     const DATA_SET_ARRAY = [];
     const TABLE_BODY = document.getElementById("contentTable").tBodies.namedItem("contentTableBody");
 
