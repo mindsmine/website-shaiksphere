@@ -1,0 +1,16 @@
+.shaiksphere-wp-subtitle,
+.blog-post-subheader {
+    text-align: justify;
+    text-justify: inter-word;
+    font-style: italic;
+}
+
+.shaiksphere-wp-body,
+.blog-post-div {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+p, ul, ol {
+    padding-bottom: 20px;
+}
