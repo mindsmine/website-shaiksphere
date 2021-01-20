@@ -59,18 +59,18 @@ const OnLoad = function (countdownElementIDs, timeSinceElementIDs, durationEleme
 };
 
 const Countdown = function (date, finalMsg, elementID) {
-    const m1 = moment();
-    const m2 = moment(date, DATE_FORMAT).startOf("day");
+    const d1 = dayjs();
+    const d2 = dayjs(date, DATE_FORMAT).startOf("day");
 
-    const difference = moment.preciseDiff(m1, m2, true);
+    const durationObject = mindsmine.Duration.preciseDiff(d1.toDate(), d2.toDate());
 
-    if (difference.firstDateWasLater) {
+    if (durationObject.firstDateIsAfter) {
         window.document.getElementById(elementID).innerHTML = finalMsg;
 
         return 0;
     }
 
-    window.document.getElementById(elementID).innerHTML = moment.preciseDiff(m1, m2);
+    window.document.getElementById(elementID).innerHTML = durationObject.durationString;
 
     window.setTimeout(Countdown, 1000, date, finalMsg, elementID);
 };
@@ -83,8 +83,8 @@ const Countdown = function (date, finalMsg, elementID) {
  * @constructor
  */
 const DisplayTimeSpan = function (startDate, endDate = null, element) {
-    const m1 = moment(startDate, DATE_FORMAT).startOf("day");
-    const m2 = (endDate == null) ? moment().startOf("day") : moment(endDate, DATE_FORMAT).startOf("day");
+    const d1 = dayjs(startDate, DATE_FORMAT).startOf("day");
+    const d2 = (endDate == null) ? dayjs().startOf("day") : dayjs(endDate, DATE_FORMAT).startOf("day");
 
-    element.innerHTML = moment.preciseDiff(m1, m2);
+    element.innerHTML = mindsmine.Duration.preciseDiff(d1.toDate(), d2.toDate()).durationString;
 };
