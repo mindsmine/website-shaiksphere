@@ -14,81 +14,8 @@
  limitations under the License.
  */
 
-const DATE_FORMAT = "MM/DD/YYYY";
-
-/**
- *
- * @param {Array} countdownElementIDs
- * @param {Array} timeSinceElementIDs
- * @param {Array} durationElementIDs
- * @constructor
- */
-const OnLoad = function (countdownElementIDs, timeSinceElementIDs, durationElementIDs) {
-    const now = new Date();
-
-    countdownElementIDs.forEach(elementID => {
-        const element = window.document.getElementById(elementID);
-
-        const _date = element.getAttribute("data-countdown-date") || now;
-
-        const _finalMsg = element.getAttribute("data-countdown-finalMsg") || "Final Message Not Available!";
-
-        Countdown(_date, _finalMsg, elementID);
-    });
-
-    timeSinceElementIDs.forEach(elementID => {
-        const element = window.document.getElementById(elementID);
-
-        const _startDate = element.getAttribute("data-countdown-start-date") || now;
-
-        DisplayTimeSpan(_startDate, null, element);
-    });
-
-    durationElementIDs.forEach(elementID => {
-        const element = window.document.getElementById(elementID);
-
-        const _startDate = element.getAttribute("data-countdown-start-date") || now;
-        const _endDate = element.getAttribute("data-countdown-end-date") || now;
-
-        DisplayTimeSpan(_startDate, _endDate, element);
-    });
-
-    ShowSource("pageSource");
-};
-
 const ShowSource = function (divID = "") {
     window.document.getElementById(divID).innerHTML = mindsmine.String.htmlEncode(
         window.document.getElementsByTagName("html")[0].innerHTML
     );
-};
-
-const Countdown = function (date, finalMsg, elementID) {
-    const m1 = moment();
-    const m2 = moment(date, DATE_FORMAT).startOf("day");
-
-    const difference = moment.preciseDiff(m1, m2, true);
-
-    if (difference.firstDateWasLater) {
-        window.document.getElementById(elementID).innerHTML = finalMsg;
-
-        return 0;
-    }
-
-    window.document.getElementById(elementID).innerHTML = moment.preciseDiff(m1, m2);
-
-    window.setTimeout(Countdown, 1000, date, finalMsg, elementID);
-};
-
-/**
- *
- * @param {String} startDate
- * @param {String} endDate
- * @param {Element} element
- * @constructor
- */
-const DisplayTimeSpan = function (startDate, endDate = null, element) {
-    const m1 = moment(startDate, DATE_FORMAT).startOf("day");
-    const m2 = (endDate == null) ? moment().startOf("day") : moment(endDate, DATE_FORMAT).startOf("day");
-
-    element.innerHTML = moment.preciseDiff(m1, m2);
 };
