@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>mindsmine-js Class: mindsmine</title>
+	<title>mindsmine-js Class: Date</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,19 +65,18 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: mindsmine</h1>
+	<h1 class="page-title">Class: Date</h1>
 <section>
 
 <header>
     
         <h2>
-        mindsmine
+            <span class="ancestors"><a href="mindsmine.html">mindsmine</a>.</span>
+        
+        Date
         </h2>
         
-            <div class="class-description"><p>The mindsmine namespace (global object) encapsulates classes, singletons, and utility methods provided
-by mindsmine-js library.</p>
-<p>Common utility functions (such as extensions to native JavaScript objects) are provided as direct properties of the
-mindsmine namespace.</p></div>
+            <div class="class-description"><p>A collection of useful static methods to deal with JavaScript dates.</p></div>
         
     
 </header>
@@ -89,7 +88,7 @@ mindsmine namespace.</p></div>
         
 <hr>
 <dt>
-    <h4 class="name" id="mindsmine"><span class="type-signature"></span>new mindsmine()</h4>
+    <h4 class="name" id="Date"><span class="type-signature"></span>new Date()</h4>
     
     
 </dt>
@@ -114,7 +113,7 @@ mindsmine namespace.</p></div>
 	<dt class="tag-since method-doc-label method-doc-details-label">Since:</dt>
 	<dd class="tag-since">
 		<ul class="dummy">
-			<li>1.0</li>
+			<li>4.5.0</li>
 		</ul>
 	</dd>
 	
@@ -174,48 +173,7 @@ mindsmine namespace.</p></div>
     
 
     
-        <h3 class="subsection-title">Classes</h3>
 
-        <dl>
-            <dt><a href="mindsmine.Ajax.html">Ajax</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.Array.html">Array</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.Boolean.html">Boolean</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.Date.html">Date</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.DOM.html">DOM</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.Duration.html">Duration</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.Function.html">Function</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.Number.html">Number</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.NumeralSystem.html">NumeralSystem</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.Object.html">Object</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.String.html">String</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.URL.html">URL</a></dt>
-            <dd></dd>
-        
-            <dt><a href="mindsmine.Window.html">Window</a></dt>
-            <dd></dd>
-        </dl>
     
 
     
@@ -223,156 +181,90 @@ mindsmine namespace.</p></div>
     
 
     
-        <h3 class="subsection-title">Members</h3>
+        <h3 class="subsection-title">Methods</h3>
 
         <dl>
             
 <hr>
-<dt class="name" id=".productBuild">
-    <h4 id=".productBuild"><span class="type-signature">&lt;static, constant> </span>productBuild<span class="type-signature"></span></h4>
-
+<dt>
+    <h4 class="name" id=".isDate"><span class="type-signature">&lt;static> </span>isDate(obj)</h4>
+    
     
 </dt>
 <dd>
+
     
     <div class="description">
-        <p>Build timestamp of the product.</p>
+        <p>Returns <code>true</code> if object is a Date</p>
+<p>Example usage:</p>
+<pre><code> mindsmine.Date.isDate(null)           //  false
+ mindsmine.Date.isDate(undefined)      //  false
+ mindsmine.Date.isDate(NaN)            //  false
+ mindsmine.Date.isDate(100)            //  false
+ mindsmine.Date.isDate(&quot;&quot;)             //  false
+ mindsmine.Date.isDate(&quot;hello&quot;)        //  false
+ mindsmine.Date.isDate(true)           //  false
+ mindsmine.Date.isDate(function() {})  //  false
+ mindsmine.Date.isDate([])             //  false
+ mindsmine.Date.isDate({})             //  false
+ mindsmine.Date.isDate(new Date())     //  true</code></pre>
     </div>
     
 
     
 
     
-<dl class="details">
-    
-
-	
-
-	
-	<dt class="tag-since method-doc-label method-doc-details-label">Since:</dt>
-	<dd class="tag-since">
-		<ul class="dummy">
-			<li>1.0.0</li>
-		</ul>
-	</dd>
-	
-
-	
 
     
-
     
+        <h5>Parameters:</h5>
+        
 
-    
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
+        <th>Type</th>
 
         
-            
-<hr>
-<dt class="name" id=".productName">
-    <h4 id=".productName"><span class="type-signature">&lt;static, constant> </span>productName<span class="type-signature"></span></h4>
-
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Name of the product.</p>
-    </div>
-    
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-	<dt class="tag-since method-doc-label method-doc-details-label">Since:</dt>
-	<dd class="tag-since">
-		<ul class="dummy">
-			<li>1.0.0</li>
-		</ul>
-	</dd>
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-</dd>
 
         
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<hr>
-<dt class="name" id=".productVersion">
-    <h4 id=".productVersion"><span class="type-signature">&lt;static, constant> </span>productVersion<span class="type-signature"></span></h4>
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The object to test</p></td>
+        </tr>
 
     
-</dt>
-<dd>
-    
-    <div class="description">
-        <p>Version of the product.</p>
-    </div>
-    
+    </tbody>
+</table>
 
     
 
@@ -386,7 +278,7 @@ mindsmine namespace.</p></div>
 	<dt class="tag-since method-doc-label method-doc-details-label">Since:</dt>
 	<dd class="tag-since">
 		<ul class="dummy">
-			<li>1.0.0</li>
+			<li>4.5.0</li>
 		</ul>
 	</dd>
 	
@@ -422,13 +314,47 @@ mindsmine namespace.</p></div>
 	
 </dl>
 
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Whether or not the object is a Date</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
 
     
 </dd>
 
         </dl>
-    
-
     
 
     

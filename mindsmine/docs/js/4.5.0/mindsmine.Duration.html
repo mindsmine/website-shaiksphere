@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu inline">
-					<li><a href="mindsmine.html">mindsmine</a></li><li><a href="mindsmine.Ajax.html">mindsmine.Ajax</a></li><li><a href="mindsmine.Array.html">mindsmine.Array</a></li><li><a href="mindsmine.Boolean.html">mindsmine.Boolean</a></li><li><a href="mindsmine.DOM.html">mindsmine.DOM</a></li><li><a href="mindsmine.Duration.html">mindsmine.Duration</a></li><li><a href="mindsmine.Function.html">mindsmine.Function</a></li><li><a href="mindsmine.Number.html">mindsmine.Number</a></li><li><a href="mindsmine.NumeralSystem.html">mindsmine.NumeralSystem</a></li><li><a href="mindsmine.Object.html">mindsmine.Object</a></li><li><a href="mindsmine.String.html">mindsmine.String</a></li><li><a href="mindsmine.URL.html">mindsmine.URL</a></li><li><a href="mindsmine.Window.html">mindsmine.Window</a></li>
+					<li><a href="mindsmine.html">mindsmine</a></li><li><a href="mindsmine.Ajax.html">mindsmine.Ajax</a></li><li><a href="mindsmine.Array.html">mindsmine.Array</a></li><li><a href="mindsmine.Boolean.html">mindsmine.Boolean</a></li><li><a href="mindsmine.Date.html">mindsmine.Date</a></li><li><a href="mindsmine.DOM.html">mindsmine.DOM</a></li><li><a href="mindsmine.Duration.html">mindsmine.Duration</a></li><li><a href="mindsmine.Function.html">mindsmine.Function</a></li><li><a href="mindsmine.Number.html">mindsmine.Number</a></li><li><a href="mindsmine.NumeralSystem.html">mindsmine.NumeralSystem</a></li><li><a href="mindsmine.Object.html">mindsmine.Object</a></li><li><a href="mindsmine.String.html">mindsmine.String</a></li><li><a href="mindsmine.URL.html">mindsmine.URL</a></li><li><a href="mindsmine.Window.html">mindsmine.Window</a></li>
 				</ul>
 			</li>
 			
@@ -929,7 +929,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".humanize"><span class="type-signature">&lt;static> </span>humanize(duration [, unit] [, asObject])</h4>
+    <h4 class="name" id=".humanize"><span class="type-signature">&lt;static> </span>humanize(duration [, unit])</h4>
     
     
 </dt>
@@ -1046,46 +1046,6 @@
             
 
             <td class="description last"><p>the unit level at which to humanise the duration.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>asObject</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Boolean</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"><p>whether to return as object or not.</p></td>
         </tr>
 
     
@@ -1210,7 +1170,7 @@
     
             
 <div class="param-desc">
-    <p>Returns <code>String</code> by default.</p>
+    <p>Returns an object with <code>durationObject</code> and string representation.</p>
 </div>
 
 
@@ -1222,12 +1182,6 @@
     <dd>
         
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">String</span>
-|
-
-<span class="param-type">null</span>
 
 
 
@@ -1236,6 +1190,154 @@
 
 
         
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id=".preciseDiff"><span class="type-signature">&lt;static> </span>preciseDiff(dateObj1, dateObj2)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dateObj1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dateObj2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 </dd>
