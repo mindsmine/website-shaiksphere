@@ -14,8 +14,10 @@
  limitations under the License.
  */
 
-const DATE_FORMAT = "MM/DD/YYYY";
-// const FINAL_PRIORITY_DATE_MOMENT = moment("3/7/2013", DATE_FORMAT);
+dayjs.extend(window.dayjs_plugin_customParseFormat);
+
+const DATE_FORMAT = "M/D/YYYY";
+// const FINAL_PRIORITY_DATE = dayjs("3/7/2013", DATE_FORMAT);
 
 const DATA_SET = {
     2013: {
@@ -125,8 +127,8 @@ const DATA_SET = {
     }
 };
 
-const EARLIER_PRIORITY_DATE_MOMENT = moment(DATA_SET["2020"].January, DATE_FORMAT);
-const LATEST_PRIORITY_DATE_MOMENT = moment(DATA_SET["2021"].January, DATE_FORMAT);
+const EARLIER_PRIORITY_DATE = dayjs(DATA_SET["2020"].January, DATE_FORMAT);
+const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2021"].January, DATE_FORMAT);
 
 // When was the last time the date changed
 const MOVEMENT_MONTHS = 12;
@@ -136,7 +138,7 @@ const MOVEMENT_MONTHS = 12;
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // Movement of dates in the above number of months
-const MOVEMENT_DAYS = Math.abs(LATEST_PRIORITY_DATE_MOMENT.diff(EARLIER_PRIORITY_DATE_MOMENT, "days"));
+const MOVEMENT_DAYS = Math.abs(LATEST_PRIORITY_DATE.diff(EARLIER_PRIORITY_DATE, "days"));
 
 const drawChart = () => {
     let PRIORITY_DATE_STRING = "3/7/2013";
@@ -147,23 +149,23 @@ const drawChart = () => {
         PRIORITY_DATE_STRING = "12/12/2019";
     }
 
-    const FINAL_PRIORITY_DATE_MOMENT = moment(PRIORITY_DATE_STRING, DATE_FORMAT);
+    const FINAL_PRIORITY_DATE = dayjs(PRIORITY_DATE_STRING, DATE_FORMAT);
 
     const CHART_TITLE = (() => {
-        if (moment.preciseDiff(LATEST_PRIORITY_DATE_MOMENT, FINAL_PRIORITY_DATE_MOMENT, true).firstDateWasLater) {
+        if (LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
             return "NO MORE WAITING!!!";
         }
-    
-        // Number of months needed to move the latest number of days
-        const pendingNumOfMonths = (FINAL_PRIORITY_DATE_MOMENT.diff(LATEST_PRIORITY_DATE_MOMENT, "days") * MOVEMENT_MONTHS) / MOVEMENT_DAYS;
-        
-        const difference = moment.preciseDiff(moment(), moment().add(pendingNumOfMonths, "months"));
 
-        if (mindsmine.String.isEmpty(difference)) {
+        // Number of months needed to move the latest number of days
+        const pendingNumOfMonths = (FINAL_PRIORITY_DATE.diff(LATEST_PRIORITY_DATE, "day") * MOVEMENT_MONTHS) / MOVEMENT_DAYS;
+
+        const difference = dayjs().add(pendingNumOfMonths, "month").diff(dayjs());
+
+        if (difference === 0) {
             return "AMAZING! Magically, the priority dates are the same!!!";
         }
 
-        return `Crude Minimum Wait Time = ${difference}`;
+        return `Crude Minimum Wait Time = ${mindsmine.Duration.humanize(difference)}`;
     })();
 
     const DATA_SET_ARRAY = [];
@@ -187,7 +189,7 @@ const drawChart = () => {
             }
 
             let item_date = DATA_SET[item_year][item_month];
-            let numOfDays = FINAL_PRIORITY_DATE_MOMENT.diff(moment(item_date, DATE_FORMAT), "days");
+            let numOfDays = FINAL_PRIORITY_DATE.diff(dayjs(item_date, DATE_FORMAT), "days");
 
             // Add name of month
             _td = document.createElement("td");
