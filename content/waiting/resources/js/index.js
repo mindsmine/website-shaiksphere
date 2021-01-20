@@ -159,13 +159,20 @@ const drawChart = () => {
         // Number of months needed to move the latest number of days
         const pendingNumOfMonths = (FINAL_PRIORITY_DATE.diff(LATEST_PRIORITY_DATE, "day") * MOVEMENT_MONTHS) / MOVEMENT_DAYS;
 
-        const difference = dayjs().add(pendingNumOfMonths, "month").diff(dayjs());
+        // const difference = dayjs().add(pendingNumOfMonths, "month").diff(dayjs());
+        // const difference = moment.preciseDiff(moment(), moment().add(pendingNumOfMonths, "months"));
 
-        if (difference === 0) {
-            return "AMAZING! Magically, the priority dates are the same!!!";
-        }
+        const durationObject = mindsmine.Duration.preciseDiff(
+            dayjs().toDate(),
+            dayjs().add(pendingNumOfMonths, "month").toDate()
+        );
 
-        return `Crude Minimum Wait Time = ${mindsmine.Duration.humanize(difference)}`;
+        // if (difference === 0) {
+        //     return "AMAZING! Magically, the priority dates are the same!!!";
+        // }
+
+        // return `Crude Minimum Wait Time = ${mindsmine.Duration.humanize(difference)}`;
+        return `Crude Minimum Wait Time = ${durationObject.durationString}`;
     })();
 
     const DATA_SET_ARRAY = [];
