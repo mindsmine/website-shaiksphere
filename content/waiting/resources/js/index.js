@@ -162,21 +162,18 @@ const drawChart = () => {
         }
 
         // Number of months needed to move the latest number of days
-        const pendingNumOfMonths = (FINAL_PRIORITY_DATE.diff(LATEST_PRIORITY_DATE, "day") * MOVEMENT_MONTHS) / MOVEMENT_DAYS;
+        // const pendingNumOfMonths = (FINAL_PRIORITY_DATE.diff(LATEST_PRIORITY_DATE, "day") * MOVEMENT_MONTHS) / MOVEMENT_DAYS;
 
-        // const difference = dayjs().add(pendingNumOfMonths, "month").diff(dayjs());
-        // const difference = moment.preciseDiff(moment(), moment().add(pendingNumOfMonths, "months"));
+        // const durationObject = mindsmine.Duration.preciseDiff(
+        //     dayjs().toDate(),
+        //     dayjs().add(pendingNumOfMonths, "month").toDate()
+        // );
 
         const durationObject = mindsmine.Duration.preciseDiff(
-            dayjs().toDate(),
-            dayjs().add(pendingNumOfMonths, "month").toDate()
+            FINAL_PRIORITY_DATE.toDate(),
+            LATEST_PRIORITY_DATE.toDate()
         );
 
-        // if (difference === 0) {
-        //     return "AMAZING! Magically, the priority dates are the same!!!";
-        // }
-
-        // return `Crude Minimum Wait Time = ${mindsmine.Duration.humanize(difference)}`;
         return `Crude Minimum Wait Time = ${durationObject.durationString}`;
     })();
 
@@ -243,36 +240,37 @@ const drawChart = () => {
                 data: DATA_SET_ARRAY.map(__dataArr => {
                     return __dataArr[1];
                 }),
+                tension: 0.4,
                 fill: false
             }]
         },
         options: {
             responsive: true,
-            title: {
-                display: true,
-                text: CHART_TITLE
-            },
-            legend: {
-                display: false
+            plugins: {
+                title: {
+                    display: true,
+                    text: CHART_TITLE
+                },
+                legend: {
+                    display: false
+                }
             },
             scales: {
-                xAxes: [{
+                x: {
                     display: true,
-                    scaleLabel: {
+                    title: {
                         display: true,
-                        labelString: "Month"
+                        text: "Month"
                     }
-                }],
-                yAxes: [{
+                },
+                y: {
                     display: true,
-                    scaleLabel: {
+                    title: {
                         display: true,
-                        labelString: "Days"
+                        text: "Days"
                     },
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
+                    beginAtZero: true
+                }
             }
         }
     };
