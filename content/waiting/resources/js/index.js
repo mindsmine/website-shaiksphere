@@ -128,12 +128,13 @@ const DATA_SET = {
         March: "01/15/2010",
         April: "05/01/2010",
         May: "08/01/2010",
-        June: "12/01/2010"
+        June: "12/01/2010",
+        July: "06/01/2011"
     }
 };
 
-const EARLIER_PRIORITY_DATE = dayjs(DATA_SET["2020"].June, DATE_FORMAT);
-const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2021"].June, DATE_FORMAT);
+const EARLIER_PRIORITY_DATE = dayjs(DATA_SET["2020"].July, DATE_FORMAT);
+const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2021"].July, DATE_FORMAT);
 
 // When was the last time the date changed
 const MOVEMENT_MONTHS = 12;
