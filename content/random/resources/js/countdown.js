@@ -20,35 +20,26 @@ const DATE_FORMAT = "MM/DD/YYYY";
 
 /**
  *
- * @param {Array} countdownElementIDs
- * @param {Array} timeSinceElementIDs
- * @param {Array} durationElementIDs
  * @constructor
  */
-const OnLoad = function (countdownElementIDs, timeSinceElementIDs, durationElementIDs) {
+const OnLoad = function () {
     const now = new Date();
 
-    countdownElementIDs.forEach(elementID => {
-        const element = window.document.getElementById(elementID);
-
+    window.document.querySelectorAll(".countdown").forEach(element => {
         const _date = element.getAttribute("data-countdown-date") || now;
 
         const _finalMsg = element.getAttribute("data-countdown-finalMsg") || "Final Message Not Available!";
 
-        Countdown(_date, _finalMsg, elementID);
+        Countdown(_date, _finalMsg, element);
     });
 
-    timeSinceElementIDs.forEach(elementID => {
-        const element = window.document.getElementById(elementID);
-
+    window.document.querySelectorAll(".since").forEach(element => {
         const _startDate = element.getAttribute("data-countdown-start-date") || now;
 
         DisplayTimeSpan(_startDate, null, element);
     });
 
-    durationElementIDs.forEach(elementID => {
-        const element = window.document.getElementById(elementID);
-
+    window.document.querySelectorAll(".duration").forEach(element => {
         const _startDate = element.getAttribute("data-countdown-start-date") || now;
         const _endDate = element.getAttribute("data-countdown-end-date") || now;
 
@@ -58,21 +49,21 @@ const OnLoad = function (countdownElementIDs, timeSinceElementIDs, durationEleme
     ShowSource("pageSource");
 };
 
-const Countdown = function (date, finalMsg, elementID) {
+const Countdown = function (date, finalMsg, element) {
     const d1 = dayjs();
     const d2 = dayjs(date, DATE_FORMAT).startOf("day");
 
     const durationObject = mindsmine.Duration.preciseDiff(d1.toDate(), d2.toDate());
 
     if (durationObject.firstDateIsAfter) {
-        window.document.getElementById(elementID).innerHTML = finalMsg;
+        element.innerHTML = finalMsg;
 
         return 0;
     }
 
-    window.document.getElementById(elementID).innerHTML = durationObject.durationString;
+    element.innerHTML = durationObject.durationString;
 
-    window.setTimeout(Countdown, 1000, date, finalMsg, elementID);
+    window.setTimeout(Countdown, 1000, date, finalMsg, element);
 };
 
 /**
