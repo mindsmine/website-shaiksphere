@@ -55,13 +55,13 @@ const Countdown = function (date, finalMsg, element) {
 
     const durationObject = mindsmine.Duration.preciseDiff(d1.toDate(), d2.toDate());
 
-    if (durationObject.firstDateIsAfter) {
+    if (durationObject.startAfterEnd) {
         element.innerHTML = finalMsg;
 
         return 0;
     }
 
-    element.innerHTML = durationObject.durationString;
+    element.innerHTML = durationObject.displayString;
 
     window.setTimeout(Countdown, 1000, date, finalMsg, element);
 };
@@ -77,5 +77,5 @@ const DisplayTimeSpan = function (startDate, endDate = null, element) {
     const d1 = dayjs(startDate, DATE_FORMAT).startOf("day");
     const d2 = (endDate == null) ? dayjs().startOf("day") : dayjs(endDate, DATE_FORMAT).startOf("day");
 
-    element.innerHTML = mindsmine.Duration.preciseDiff(d1.toDate(), d2.toDate()).durationString;
+    element.innerHTML = mindsmine.Duration.preciseDiff(d1.toDate(), d2.toDate()).displayString;
 };

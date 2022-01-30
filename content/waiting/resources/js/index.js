@@ -137,12 +137,13 @@ const DATA_SET = {
         December: "05/01/2012"
     },
     2022: {
-        January: "07/08/2012"
+        January: "07/08/2012",
+        February: "01/01/2013"
     }
 };
 
-const EARLIER_PRIORITY_DATE = dayjs(DATA_SET["2021"].January, DATE_FORMAT);
-const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2022"].January, DATE_FORMAT);
+const EARLIER_PRIORITY_DATE = dayjs(DATA_SET["2021"].February, DATE_FORMAT);
+const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2022"].February, DATE_FORMAT);
 
 // When was the last time the date changed
 const MOVEMENT_MONTHS = 12;
@@ -183,7 +184,7 @@ const drawChart = () => {
             LATEST_PRIORITY_DATE.toDate()
         );
 
-        return `Crude Minimum Wait Time = ${durationObject.durationString}`;
+        return `Crude Minimum Wait Time = ${durationObject.displayString}`;
     })();
 
     const DATA_SET_ARRAY = [];
