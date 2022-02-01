@@ -55,7 +55,7 @@ const Countdown = function (date, finalMsg, element) {
 
     const durationObject = mindsmine.Duration.preciseDiff(d1.toDate(), d2.toDate());
 
-    if (durationObject.startAfterEnd) {
+    if (d1.isAfter(d2)) {
         element.innerHTML = finalMsg;
 
         return 0;
