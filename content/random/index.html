@@ -34,6 +34,7 @@
     <script type="text/javascript" src="resources/js/countdown.js"></script>
     <script type="text/javascript" src="resources/js/highlight.js"></script>
 
+    <link rel="stylesheet" href="../resources/css/default.css" />
     <link rel="stylesheet" href="../resources/css/random.css" />
 </head>
 <body onload="OnLoad()">
@@ -47,12 +48,6 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><a target="_blank" href="http://www.beijing2022.cn/en">Winter 2022 Olympics</a> in Beijing, China</td>
-        <td>
-            <span class="countdown" data-countdown-date="02/04/2022" data-countdown-finalMsg="Time for Winter 2022 Olympics!"></span>
-        </td>
-    </tr>
     <tr>
         <td><a target="_blank" href="https://en.wikipedia.org/wiki/2023">2023</a></td>
         <td>
@@ -118,10 +113,12 @@
 <br />
 <hr />
 <h2>Palindrome</h2>
-Enter a paragraph of text in the below <em>textarea</em> and click on the <strong>Submit</strong> button. If proper text
-is entered, the paragraph will be redisplayed underneath the <em>textarea</em> with the palindrome words
-<span style="background-color: yellow;">highlighted</span>. If the paragraph is improper text, appropriate text will be
-displayed instead.
+<div>
+    Enter a paragraph of text in the below <em>textarea</em> and click on the <strong>Submit</strong> button. If proper text
+    is entered, the paragraph will be redisplayed underneath the <em>textarea</em> with the palindrome words
+    <span style="background-color: yellow;">highlighted</span>. If the paragraph is improper text, appropriate text will be
+    displayed instead.
+</div>
 <form id="formOne" onsubmit="HighlightExample.onFormSubmit('formOneTextArea', 'formOneOutput'); return false;">
     <textarea id="formOneTextArea" cols="50" rows="6" style="resize: none;" required="required"
               placeholder="Enter the paragraph of text"></textarea>
