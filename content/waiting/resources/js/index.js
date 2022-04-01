@@ -138,22 +138,17 @@ const DATA_SET = {
     },
     2022: {
         January: "07/08/2012",
-        February: "01/01/2013"
+        February: "01/01/2013",
+        March: "05/01/2013",
+        April: "07/08/2013"
     }
 };
 
-const EARLIER_PRIORITY_DATE = dayjs(DATA_SET["2021"].February, DATE_FORMAT);
-const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2022"].February, DATE_FORMAT);
-
-// When was the last time the date changed
-const MOVEMENT_MONTHS = 12;
+const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2022"].April, DATE_FORMAT);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// Movement of dates in the above number of months
-const MOVEMENT_DAYS = Math.abs(LATEST_PRIORITY_DATE.diff(EARLIER_PRIORITY_DATE, "days"));
 
 const drawChart = () => {
     let PRIORITY_DATE_STRING = "3/7/2013";
@@ -168,16 +163,8 @@ const drawChart = () => {
 
     const CHART_TITLE = (() => {
         if (LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
-            return "NO MORE WAITING!!!";
+            return "Current date is past the priority date. File ASAP. Do NOT wait anymore!";
         }
-
-        // Number of months needed to move the latest number of days
-        // const pendingNumOfMonths = (FINAL_PRIORITY_DATE.diff(LATEST_PRIORITY_DATE, "day") * MOVEMENT_MONTHS) / MOVEMENT_DAYS;
-
-        // const durationObject = mindsmine.Duration.preciseDiff(
-        //     dayjs().toDate(),
-        //     dayjs().add(pendingNumOfMonths, "month").toDate()
-        // );
 
         const durationObject = mindsmine.Duration.preciseDiff(
             FINAL_PRIORITY_DATE.toDate(),
