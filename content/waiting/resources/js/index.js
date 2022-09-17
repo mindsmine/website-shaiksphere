@@ -145,11 +145,12 @@ const DATA_SET = {
         June: "09/01/2014",
         July: "12/01/2014",
         August: "12/01/2014",
-        September: "12/01/2014"
+        September: "12/01/2014",
+        October: "04/01/2012"
     }
 };
 
-const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2022"].September, DATE_FORMAT);
+const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2022"].October, DATE_FORMAT);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -176,7 +177,7 @@ const drawChart = () => {
             LATEST_PRIORITY_DATE.toDate()
         );
 
-        return `Crude Minimum Wait Time = ${durationObject.displayString}`;
+        return `${durationObject.displayString} behind my priority date`;
     })();
 
     const DATA_SET_ARRAY = [];
@@ -188,6 +189,7 @@ const drawChart = () => {
 
         let _tr = document.createElement("tr");
 
+        // Add year
         let _td = document.createElement("td");
         _td.setAttribute("rowspan", __item_months.length);
         _td.appendChild(document.createTextNode(item_year));
@@ -199,8 +201,9 @@ const drawChart = () => {
                 _tr = document.createElement("tr");
             }
 
-            let item_date = DATA_SET[item_year][item_month];
-            let numOfDays = FINAL_PRIORITY_DATE.diff(dayjs(item_date, DATE_FORMAT), "days");
+            const item_date = DATA_SET[item_year][item_month];
+            const itemDateObj = dayjs(item_date, DATE_FORMAT);
+            const numOfDays = mindsmine.Duration.preciseDiff(FINAL_PRIORITY_DATE.toDate(), itemDateObj.toDate()).displayString;
 
             // Add name of month
             _td = document.createElement("td");
@@ -224,7 +227,7 @@ const drawChart = () => {
 
             DATA_SET_ARRAY.push([
                 `${item_year} - ${item_month}`,
-                numOfDays
+                FINAL_PRIORITY_DATE.diff(itemDateObj, "days")
             ]);
         });
     });
