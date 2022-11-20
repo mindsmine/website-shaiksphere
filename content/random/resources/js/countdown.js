@@ -16,7 +16,7 @@
 
 dayjs.extend(window.dayjs_plugin_customParseFormat);
 
-const DATE_FORMAT = "MM/DD/YYYY";
+const DATE_FORMAT = "M/D/YYYY";
 
 const OnLoad = function () {
     const now = new Date();
