@@ -147,11 +147,12 @@ const DATA_SET = {
         August: "12/01/2014",
         September: "12/01/2014",
         October: "04/01/2012",
-        November: "04/01/2012"
+        November: "04/01/2012",
+        December: "10/08/2011"
     }
 };
 
-const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2022"].November, DATE_FORMAT);
+const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2022"].December, DATE_FORMAT);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -178,7 +179,7 @@ const drawChart = () => {
             LATEST_PRIORITY_DATE.toDate()
         );
 
-        return `${durationObject.displayString} behind my priority date`;
+        return `Current date is ${durationObject.displayString} behind the priority date`;
     })();
 
     const DATA_SET_ARRAY = [];
