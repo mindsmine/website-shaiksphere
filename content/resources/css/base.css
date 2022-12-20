@@ -18,19 +18,3 @@ h1, h2, h3, h4, h5, h6, div, button, table, small {
     font-family: "Segoe UI", Arial, sans-serif;
     word-break: break-all;
 }
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-img {
-    float: right;
-}
-
-.surahTitle {
-    color: red;
-    text-align: center;
-    font-size: x-large;
-    font-weight: bolder;
-}

@@ -15,31 +15,32 @@
  */
 
 class SurahHolder {
-    constructor(name, index, count) {
-        this.name = name;
+    constructor(index, count, name, translation) {
         this.index = index;
         this.count = count;
+        this.name = name;
+        this.translation = translation;
     }
 }
 
 const SurahList = [];
 
-SurahList.push(new SurahHolder("al-Fātiḥah",   1,  7));
+SurahList.push(new SurahHolder(  1,  7, "al-Fātiḥah", "The Opening"));
 SurahList.push(null);
-SurahList.push(new SurahHolder("al-Baq̈arah",   2,  6));
+SurahList.push(new SurahHolder(  2,  6, "al-Baq̈arah", "The Cow"));
 SurahList.push(null);
-SurahList.push(new SurahHolder("al-'Aṣr",    103,  4));
-SurahList.push(new SurahHolder("al-Humazah", 104, 10));
-SurahList.push(new SurahHolder("al-Fīl",     105,  6));
-SurahList.push(new SurahHolder("Q̈urayš",     106,  5));
-SurahList.push(new SurahHolder("al-Ma'ūn",   107,  8));
-SurahList.push(new SurahHolder("al-Kawthar", 108,  4));
-SurahList.push(new SurahHolder("al-Kāfirūn", 109,  7));
-SurahList.push(new SurahHolder("an-Naṣr",    110,  4));
-SurahList.push(new SurahHolder("al-Masad",   111,  6));
-SurahList.push(new SurahHolder("al-'Ikhlāṣ", 112,  5));
-SurahList.push(new SurahHolder("al-Falaq̈",   113,  6));
-SurahList.push(new SurahHolder("an-Nās",     114,  7));
+SurahList.push(new SurahHolder(103,  4, "al-'Aṣr", "The Declining Day"));
+SurahList.push(new SurahHolder(104, 10, "al-Humazah", "The Gossipmonger"));
+SurahList.push(new SurahHolder(105,  6, "al-Fīl", "The Elephant"));
+SurahList.push(new SurahHolder(106,  5, "Q̈urayš", "Quraysh"));
+SurahList.push(new SurahHolder(107,  8, "al-Ma'ūn", "The Acts of Kindness"));
+SurahList.push(new SurahHolder(108,  4, "al-Kawthar", "Abundance"));
+SurahList.push(new SurahHolder(109,  7, "al-Kāfirūn", "The Disbelievers"));
+SurahList.push(new SurahHolder(110,  4, "an-Naṣr", "The Help"));
+SurahList.push(new SurahHolder(111,  6, "al-Masad", "The Palm Fiber"));
+SurahList.push(new SurahHolder(112,  5, "al-'Ikhlāṣ", "Sincerity"));
+SurahList.push(new SurahHolder(113,  6, "al-Falaq̈", "The Daybreak"));
+SurahList.push(new SurahHolder(114,  7, "an-Nās", "Humankind"));
 
 const onDOMLoad = () => {
     let tbodyContent = [];
@@ -48,7 +49,7 @@ const onDOMLoad = () => {
         if (surah == null) {
             tbodyContent.push(`<tr><td><hr /></td></tr>`);
         } else {
-            tbodyContent.push(`<tr><td class="surahTitle">${surah.index} - ${surah.name}</td></tr>`);
+            tbodyContent.push(`<tr><td class="surahTitle">${surah.index} - ${surah.name} - ${surah.translation}</td></tr>`);
     
             for (let i = 1; i <= surah.count; i++) {
                 let imgName = `${Number(surah.index).toString().padStart(3, 0)}-${Number(i).toString().padStart(3, 0)}`;
@@ -59,8 +60,6 @@ const onDOMLoad = () => {
             tbodyContent.push(`<tr><td>&nbsp;</td></tr>`);
         }
     });
-
-    // document.getElementById("display").innerHTML = mindsmine.String.htmlEncode(bodyContent.join(""));
 
     let bodyContent = `<center><table><tbody>${tbodyContent.join("")}</tbody></table></center>`;
 

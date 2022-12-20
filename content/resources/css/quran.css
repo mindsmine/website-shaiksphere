@@ -18,25 +18,16 @@
 
 table {
     border-collapse: collapse;
+    border-spacing: 0;
 }
 
-th, td {
-    border: 1px solid #DDDDDD;
-    padding: 7px 10px;
+img {
+    float: right;
 }
 
-th {
-    background-color: #F0F0F0;
-}
-
-tr:nth-child(even) {
-    background-color: #F0F0F0;
-}
-
-tr:nth-child(odd) {
-    background-color: transparent;
-}
-
-.special {
+.surahTitle {
     color: red;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
 }
