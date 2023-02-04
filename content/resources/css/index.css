@@ -14,11 +14,7 @@
  limitations under the License.
  */
 
-* {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 100%;
-    word-break: break-all;
-}
+@import url("./base.css");
 
 body {
     background-color: black;
@@ -50,6 +46,7 @@ footer {
 
 button {
     width: 100%;
+    font-size: 100%;
     border-width: 0.063rem;
     border-color: white;
     border-style: solid;
