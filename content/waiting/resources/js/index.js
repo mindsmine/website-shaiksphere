@@ -151,11 +151,13 @@ const DATA_SET = {
         December: "10/08/2011"
     },
     2023: {
-        January: "10/08/2011"
+        January: "10/08/2011",
+        February: "10/08/2011",
+        March: "10/08/2011"
     }
 };
 
-const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2023"].January, DATE_FORMAT);
+const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2023"].March, DATE_FORMAT);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -179,7 +181,8 @@ const drawChart = () => {
 
         const durationObject = mindsmine.Duration.preciseDiff(
             FINAL_PRIORITY_DATE.toDate(),
-            LATEST_PRIORITY_DATE.toDate()
+            dayjs().startOf("day").toDate()
+            // LATEST_PRIORITY_DATE.toDate()
         );
 
         return `Current date is ${durationObject.displayString} behind the priority date`;
