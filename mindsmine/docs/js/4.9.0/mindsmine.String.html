@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: String</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: String</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="mindsmine.html">mindsmine</a>.</span>String</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>A collection of useful static methods to deal with JavaScript strings.</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".areEqual"><span class="type-signature">(static) </span>areEqual<span class="signature">(str1, str2, lenient<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Returns <code>true</code> if the passed values are equal, <code>false</code> otherwise.</p>
+<ul>
+    <li>
+        When the lenient flag is unset or is set to <code>true</code>, the comparison will ignore the case and
+        trim the strings before comparing; the two strings are considered equal if,
+        <ul>
+            <li>Both strings are empty, as defined by <a href="mindsmine.String.html#.isEmpty"><code>mindsmine.String.isEmpty</code></a>.</li>
+            <li>
+                Trimmed versions of both strings, as defined by <code>String.prototype.trim()</code>,
+                are equal.
+            </li>
+        </ul>
+    </li>
+    <li>
+        When the lenient flag is set to <code>false</code>, the two strings are considered equal if,
+        <ul>
+            <li>Both strings are not null</li>
+            <li>Both strings represent the same sequence of characters</li>
+        </ul>
+    </li>
+</ul>
+<p>Example usage:</p>
+<pre class="prettyprint source lang-javascript"><code>     mindsmine.String.areEqual(null, null, true)       //  true
+     mindsmine.String.areEqual(null, &quot;&quot;, true)         //  true
+     mindsmine.String.areEqual(&quot;&quot;, null, true)         //  true
+     mindsmine.String.areEqual(&quot;&quot;, &quot;&quot;, true)           //  true
+     mindsmine.String.areEqual(&quot;   &quot;, &quot;&quot;, true)        //  true
+     mindsmine.String.areEqual(&quot; abc&quot;, &quot;abc &quot;, true)   //  true
+     mindsmine.String.areEqual(&quot;&quot;, &quot;abc&quot;, true)        //  false
+     mindsmine.String.areEqual(&quot;ab c&quot;, &quot;abc&quot;, true)    //  false
+     mindsmine.String.areEqual(&quot;ABC&quot;, &quot;abc&quot;, true)     //  true
+     mindsmine.String.areEqual(&quot;abc&quot;, &quot;abc&quot;, true)     //  true
+
+     mindsmine.String.areEqual(null, null)             //  true
+     mindsmine.String.areEqual(null, &quot;&quot;)               //  true
+     mindsmine.String.areEqual(&quot;&quot;, null)               //  true
+     mindsmine.String.areEqual(&quot;&quot;, &quot;&quot;)                 //  true
+     mindsmine.String.areEqual(&quot;   &quot;, &quot;&quot;)              //  true
+     mindsmine.String.areEqual(&quot; abc&quot;, &quot;abc &quot;)         //  true
+     mindsmine.String.areEqual(&quot;&quot;, &quot;abc&quot;)              //  false
+     mindsmine.String.areEqual(&quot;ab c&quot;, &quot;abc&quot;)          //  false
+     mindsmine.String.areEqual(&quot;ABC&quot;, &quot;abc&quot;)           //  true
+     mindsmine.String.areEqual(&quot;abc&quot;, &quot;abc&quot;)           //  true
+
+     mindsmine.String.areEqual(null, null, false)      //  false
+     mindsmine.String.areEqual(null, &quot;&quot;, false)        //  false
+     mindsmine.String.areEqual(&quot;&quot;, null, false)        //  false
+     mindsmine.String.areEqual(&quot;&quot;, &quot;&quot;, false)          //  true
+     mindsmine.String.areEqual(&quot;   &quot;, &quot;&quot;, false)       //  false
+     mindsmine.String.areEqual(&quot; abc&quot;, &quot;abc &quot;, false)  //  false
+     mindsmine.String.areEqual(&quot;&quot;, &quot;abc&quot;, false)       //  false
+     mindsmine.String.areEqual(&quot;ab c&quot;, &quot;abc&quot;, false)   //  false
+     mindsmine.String.areEqual(&quot;ABC&quot;, &quot;abc&quot;, false)    //  false
+     mindsmine.String.areEqual(&quot;abc&quot;, &quot;abc&quot;, false)    //  true
+</code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>str1</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>to compare</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>str2</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>to compare</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lenient</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>whether to be lenient or not</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>whether two strings are equal</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".format"><span class="type-signature">(static) </span>format<span class="signature">(string, &hellip;values)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Allows you to define a tokenised string and pass an arbitrary number of arguments to replace the tokens. Each
+token must be unique, and must increment in the format <code>{0}</code>, <code>{1}</code>, etc.</p>
+<p>Example usage:</p>
+<pre class="prettyprint source lang-javascript"><code>     var str1 = &quot;Hello&quot;;
+     var str2 = &quot;World&quot;;
+
+     var str3 = mindsmine.String.format(&quot;Let us combine {0} and {1} together.&quot;, str1, str2);
+
+     // str3 now contains the string: &quot;Let us combine Hello and World together.&quot;
+</code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>string</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The tokenised string to be formatted.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>values</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The values to replace tokens <code>{0}</code>, <code>{1}</code>, etc. in order.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The formatted string</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getNullSafe"><span class="type-signature">(static) </span>getNullSafe<span class="signature">(str)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Returns a non-null string, even if the object being passed is a null string.</p>
+<p>If the passed-in object is a non-null string, then it is returned as-is.</p>
+<p>Example usage:</p>
+<pre class="prettyprint source lang-javascript"><code>     mindsmine.String.getNullSafe(null)       //  &quot;&quot;
+     mindsmine.String.getNullSafe(undefined)  //  &quot;&quot;
+     mindsmine.String.getNullSafe(NaN)        //  &quot;&quot;
+     mindsmine.String.getNullSafe(100)        //  &quot;&quot;
+     mindsmine.String.getNullSafe(&quot;&quot;)         //  &quot;&quot;
+     mindsmine.String.getNullSafe(&quot;hello&quot;)    //  hello
+     mindsmine.String.getNullSafe(true)       //  &quot;&quot;
+</code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The string to safeguard against <code>null</code>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>If str is <code>null</code> then <code>&quot;&quot;</code> (empty string).</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".htmlDecode"><span class="type-signature">(static) </span>htmlDecode<span class="signature">(str)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Convert certain characters (&amp;, &lt;, &gt;, ' and &quot;) from their HTML character equivalents.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The string to decode.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The decoded text.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".htmlEncode"><span class="type-signature">(static) </span>htmlEncode<span class="signature">(str)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Convert certain characters (&amp;, &lt;, &gt;, ' and &quot;) to their HTML character equivalents for literal display in web
+pages.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The string to encode.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The encoded text.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isEmpty"><span class="type-signature">(static) </span>isEmpty<span class="signature">(str)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Returns <code>true</code> if the passed value is an empty string, false otherwise.</p>
+<p>The value is deemed to be an empty string if it is either:</p>
+<ul>
+    <li><code>null</code></li>
+    <li><code>undefined</code></li>
+    <li><code>NaN</code></li>
+    <li>not a string</li>
+    <li>a zero-length string</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The value to test.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isPalindrome"><span class="type-signature">(static) </span>isPalindrome<span class="signature">(str, lenient<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Returns <code>true</code> if the passed string is a palindrome, <code>false</code> otherwise.</p>
+<p>A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward,
+such as madam or kayak.</p>
+<p>Convenience method equivalent to <code>mindsmine.String.areEqual(string, string.reverse, flag)</code></p>
+<p>Example usage:</p>
+<pre class="prettyprint source lang-javascript"><code>     mindsmine.String.isPalindrome(null, true)      //  true
+     mindsmine.String.isPalindrome(&quot;&quot;, true)        //  true
+     mindsmine.String.isPalindrome(&quot;   &quot;, true)     //  true
+     mindsmine.String.isPalindrome(&quot; aba&quot;, true)    //  true
+     mindsmine.String.isPalindrome(&quot;aba&quot;, true)     //  true
+     mindsmine.String.isPalindrome(&quot;mAdAm&quot;, true)   //  true
+     mindsmine.String.isPalindrome(&quot;madAm&quot;, true)   //  true
+     mindsmine.String.isPalindrome(&quot;madam&quot;, true)   //  true
+     mindsmine.String.isPalindrome(&quot;Madam&quot;, true)   //  true
+     mindsmine.String.isPalindrome(&quot;hello&quot;, true)   //  false
+
+     mindsmine.String.isPalindrome(null)            //  true
+     mindsmine.String.isPalindrome(&quot;&quot;)              //  true
+     mindsmine.String.isPalindrome(&quot;   &quot;)           //  true
+     mindsmine.String.isPalindrome(&quot; aba&quot;)          //  true
+     mindsmine.String.isPalindrome(&quot;aba&quot;)           //  true
+     mindsmine.String.isPalindrome(&quot;mAdAm&quot;)         //  true
+     mindsmine.String.isPalindrome(&quot;madAm&quot;)         //  true
+     mindsmine.String.isPalindrome(&quot;madam&quot;)         //  true
+     mindsmine.String.isPalindrome(&quot;Madam&quot;)         //  true
+     mindsmine.String.isPalindrome(&quot;hello&quot;)         //  false
+
+     mindsmine.String.isPalindrome(null, false)     //  false
+     mindsmine.String.isPalindrome(&quot;&quot;, false)       //  true
+     mindsmine.String.isPalindrome(&quot;   &quot;, false)    //  true
+     mindsmine.String.isPalindrome(&quot; aba&quot;, false)   //  false
+     mindsmine.String.isPalindrome(&quot;aba&quot;, false)    //  true
+     mindsmine.String.isPalindrome(&quot;mAdAm&quot;, false)  //  true
+     mindsmine.String.isPalindrome(&quot;madAm&quot;, false)  //  false
+     mindsmine.String.isPalindrome(&quot;madam&quot;, false)  //  true
+     mindsmine.String.isPalindrome(&quot;Madam&quot;, false)  //  false
+     mindsmine.String.isPalindrome(&quot;hello&quot;, false)  //  false
+</code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>str</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>to check</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lenient</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>whether to be lenient or not</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="mindsmine.String.html#.areEqual"><code>mindsmine.String.areEqual</code></a></li>
+        
+            <li><a href="https://en.wikipedia.org/wiki/Palindrome">Palindrome (Wikipedia)</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>if the string is a Palindrome</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="mindsmine.html">mindsmine</a></li><li><a href="mindsmine.Ajax.html">mindsmine.Ajax</a></li><li><a href="mindsmine.Array.html">mindsmine.Array</a></li><li><a href="mindsmine.Boolean.html">mindsmine.Boolean</a></li><li><a href="mindsmine.DOM.html">mindsmine.DOM</a></li><li><a href="mindsmine.Date.html">mindsmine.Date</a></li><li><a href="mindsmine.Duration.html">mindsmine.Duration</a></li><li><a href="mindsmine.Function.html">mindsmine.Function</a></li><li><a href="mindsmine.Http.html">mindsmine.Http</a></li><li><a href="mindsmine.Number.html">mindsmine.Number</a></li><li><a href="mindsmine.NumeralSystem.html">mindsmine.NumeralSystem</a></li><li><a href="mindsmine.Object.html">mindsmine.Object</a></li><li><a href="mindsmine.String.html">mindsmine.String</a></li><li><a href="mindsmine.URL.html">mindsmine.URL</a></li><li><a href="mindsmine.Window.html">mindsmine.Window</a></li></ul><h3>Classes</h3><ul><li><a href="mindsmine.DurationHolder.html">mindsmine.DurationHolder</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Copyright &#169; 2008, 2023, <strong><a target='_blank' href='https://www.shaiksphere.com'>Shaiksphere Inc</a></strong>. All rights reserved.
+    <br />
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a>
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
