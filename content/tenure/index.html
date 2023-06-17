@@ -23,43 +23,40 @@
     <meta name="author" content="Mohammed Shaik Hussain Ali" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Waiting</title>
+    <title>Tenure</title>
 
     <script type="text/javascript" src="https://cdn.shaiksphere.com/mindsmine-js-4.9.0.min.js"></script>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.8/dayjs.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.8/plugin/customParseFormat.min.js"></script>
 
     <script type="text/javascript" src="resources/js/index.js"></script>
 
-    <link rel="stylesheet" href="../resources/css/random.css" />
+    <link rel="stylesheet" href="../resources/css/random.css">
 </head>
-<body onload="drawChart()">
-<div style="width: 100%;">
-    <canvas id="waitingCanvas"></canvas>
-</div>
-<hr />
-<details>
-    <a target="_blank" href="https://flag.dol.gov/processingtimes">Processing Times</a>
-    <br />
-    <a target="_blank" href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html">Visa Bulletin</a>
-    <br />
-    <a target="_blank" href="http://www.mygcvisa.com/visa-bulletin/visa-bulletin-predictions.aspx">Visa Bulletin Predictions</a>
-    <br />
-    <br />
-    <table style="width: 100%;" id="contentTable">
+<body onload="OnDOMLoadHelper.run()">
+<div id="mainContent">
+    <table>
         <thead>
         <tr>
-            <th>Year</th>
-            <th>Month</th>
-            <th>Priority Date</th>
-            <th>Number of Days</th>
+            <th>Company</th>
+            <th>Start Date</th>
+            <th>End Date</th>
         </tr>
         </thead>
-        <tbody id="contentTableBody"></tbody>
+        <tbody id="content"></tbody>
     </table>
-</details>
+</div>
 </body>
+<script>
+    const _TENURES = [];
+
+    _TENURES.push(new Tenure("Kanbay", "09/01/2006", "10/06/2006"));
+    _TENURES.push(new Tenure("Oracle", "06/16/2008", "11/30/2012"));
+    _TENURES.push(new Tenure("VMware", "12/03/2012", "03/13/2015"));
+    _TENURES.push(new Tenure("HPE",    "03/16/2015", "03/04/2016"));
+    _TENURES.push(new Tenure("Splunk", "03/07/2016", "02/15/2018"));
+    _TENURES.push(new Tenure("VMware", "02/20/2018", "03/03/2020"));
+    _TENURES.push(new Tenure("Oracle", "03/09/2020"));
+</script>
 </html>
