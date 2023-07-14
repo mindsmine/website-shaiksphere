@@ -157,7 +157,8 @@ const DATA_SET = {
         April: "01/01/2011",
         May: "01/01/2011",
         June: "01/01/2011",
-        July: "01/01/2011"
+        July: "01/01/2011",
+        August: "01/01/2011"
     }
 };
 
@@ -189,7 +190,7 @@ const drawChart = () => {
             // LATEST_PRIORITY_DATE.toDate()
         );
 
-        return `Current date is ${durationObject.displayString} behind the priority date`;
+        return `Still ${durationObject.displayString} for priority date to be current`;
     })();
 
     const DATA_SET_ARRAY = [];
