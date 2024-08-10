@@ -172,11 +172,12 @@ const DATA_SET = {
         May: "04/15/2012",
         June: "04/15/2012",
         July: "06/15/2012",
-        August: "07/15/2012"
+        August: "07/15/2012",
+        September: "07/15/2012"
     }
 };
 
-const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2024"].August, DATE_FORMAT);
+const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2024"].September, DATE_FORMAT);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
