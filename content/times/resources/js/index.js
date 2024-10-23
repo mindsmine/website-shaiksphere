@@ -14,11 +14,14 @@
  limitations under the License.
 */
 
+// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
 const LOCALE = "en-US";
 
 const IST = "Asia/Kolkata";
 const ET = "America/New_York";
 const CT = "America/Chicago";
+const PT = "America/Los_Angeles";
 
 const ZoneFormatter = (timeZone) => {
     return {
@@ -46,6 +49,8 @@ const generateRowContent = (date) => {
 
     cells.push(`<td>${IndiaFormatter.Date.format(date)}</td>`);
     cells.push(`<td style="text-align: right;">${IndiaFormatter.Time.format(date)}</td>`);
+    cells.push(`<td>${SEAFormatter.Date.format(date)}</td>`);
+    cells.push(`<td style="text-align: right;">${SEAFormatter.Time.format(date)}</td>`);
     cells.push(`<td>${KCFormatter.Date.format(date)}</td>`);
     cells.push(`<td style="text-align: right;">${KCFormatter.Time.format(date)}</td>`);
     cells.push(`<td>${NYCFormatter.Date.format(date)}</td>`);
@@ -59,6 +64,8 @@ const IndiaFormatter = ZoneFormatter(IST);
 const NYCFormatter = ZoneFormatter(ET);
 
 const KCFormatter = ZoneFormatter(CT);
+
+const SEAFormatter = ZoneFormatter(PT);
 
 const onDOMLoad = () => {
     const curDate = new Date();
@@ -74,14 +81,14 @@ const onDOMLoad = () => {
 
     const utcDate = new Date(Date.UTC(curDate.getFullYear(), curDate.getMonth(), curDate.getDate(), 13, 0, 0, 0));
     
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 10; i++) {
         tbodyContent.push(`<tr>${generateRowContent(addMinutes(utcDate, i * 30))}</tr>`);
     }
 
     tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
     tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
 
-    for (let i = 27; i < 32; i++) {
+    for (let i = 27; i < 36; i++) {
         tbodyContent.push(`<tr>${generateRowContent(addMinutes(utcDate, i * 30))}</tr>`);
     }
 
