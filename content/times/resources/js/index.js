@@ -79,10 +79,8 @@ const onDOMLoad = () => {
     tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
     tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
 
-    // During Daylight Savings
-    // const utcHour = 13;
-    // During Standard
-    const utcHour = 14;
+    // Doing a calculation instead of hardcoding
+    const utcHour = 9 + ((new Date()).getTimezoneOffset() / 60);
 
     const utcDate = new Date(Date.UTC(curDate.getFullYear(), curDate.getMonth(), curDate.getDate(), utcHour, 0, 0, 0));
     
