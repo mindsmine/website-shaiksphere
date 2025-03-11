@@ -79,8 +79,12 @@ const onDOMLoad = () => {
     tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
     tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
 
-    // Doing a calculation instead of hardcoding
-    const utcHour = 9 + ((new Date()).getTimezoneOffset() / 60);
+    // During Daylight Saving Time
+    const nycOffset = 4;
+    // During Standard Time
+    // const nycOffset = 5;
+
+    const utcHour = 9 + nycOffset;
 
     const utcDate = new Date(Date.UTC(curDate.getFullYear(), curDate.getMonth(), curDate.getDate(), utcHour, 0, 0, 0));
     
