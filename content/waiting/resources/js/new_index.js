@@ -16,10 +16,11 @@
 
 dayjs.extend(window.dayjs_plugin_customParseFormat);
 
-const DATE_FORMAT = "M/D/YYYY";
+const DATE_FORMAT = "DDMMMYY";
 // const FINAL_PRIORITY_DATE = dayjs("3/7/2013", DATE_FORMAT);
 
 const DATA_SET = {
+    /*
     2013: {
         November: "6/15/2008",
         December: "11/15/2004"
@@ -150,69 +151,158 @@ const DATA_SET = {
         November: "04/01/2012",
         December: "10/08/2011"
     },
+    */
     2023: {
-        January: "10/08/2011",
-        February: "10/08/2011",
-        March: "10/08/2011",
-        April: "01/01/2011",
-        May: "01/01/2011",
-        June: "01/01/2011",
-        July: "01/01/2011",
-        August: "01/01/2011",
-        September: "01/01/2011",
-        October: "01/01/2012",
-        November: "01/01/2012",
-        December: "01/01/2012"
+        January: {
+            EB2: "08Oct11",
+            EB3: "15Jun12"
+        },
+        February: {
+            EB2: "08Oct11",
+            EB3: "15Jun12"
+        },
+        March: {
+            EB2: "08Oct11",
+            EB3: "15Jun12"
+        },
+        April: {
+            EB2: "01Jan11",
+            EB3: "15Jun12"
+        },
+        May: {
+            EB2: "01Jan11",
+            EB3: "15Jun12"
+        },
+        June: {
+            EB2: "01Jan11",
+            EB3: "15Jun12"
+        },
+        July: {
+            EB2: "01Jan11",
+            EB3: "01Jan09"
+        },
+        August: {
+            EB2: "01Jan11",
+            EB3: "01Jan09"
+        },
+        September: {
+            EB2: "01Jan11",
+            EB3: "01Jan09"
+        },
+        October: {
+            EB2: "01Jan12",
+            EB3: "01May12"
+        },
+        November: {
+            EB2: "01Jan12",
+            EB3: "01May12"
+        },
+        December: {
+            EB2: "01Jan12",
+            EB3: "01May12"
+        }
     },
     2024: {
-        January: "03/01/2012",
-        February: "03/01/2012",
-        March: "03/01/2012",
-        April: "04/01/2012",
-        May: "04/15/2012",
-        June: "04/15/2012",
-        July: "06/15/2012",
-        August: "07/15/2012",
-        September: "07/15/2012",
-        October: "07/15/2012",
-        November: "07/15/2012",
-        December: "08/01/2012"
+        January: {
+            EB2: "01Mar12",
+            EB3: "01Jun12"
+        },
+        February: {
+            EB2: "01Mar12",
+            EB3: "01Jul12"
+        },
+        March: {
+            EB2: "01Mar12",
+            EB3: "01Jul12"
+        },
+        April: {
+            EB2: "15Apr12",
+            EB3: "15Aug12"
+        },
+        May: {
+            EB2: "15Apr12",
+            EB3: "15Aug12"
+        },
+        June: {
+            EB2: "15Apr12",
+            EB3: "22Aug12"
+        },
+        July: {
+            EB2: "15Jun12",
+            EB3: "22Sep12"
+        },
+        August: {
+            EB2: "15Jul12",
+            EB3: "22Oct12"
+        },
+        September: {
+            EB2: "15Jul12",
+            EB3: "22Oct12"
+        },
+        October: {
+            EB2: "15Jul12",
+            EB3: "01Nov12"
+        },
+        November: {
+            EB2: "15Jul12",
+            EB3: "01Nov12"
+        },
+        December: {
+            EB2: "01Aug12",
+            EB3: "08Nov12"
+        }
     },
     2025: {
-        January: "10/01/2012",
-        February: "10/15/2012",
-        March: "12/01/2012",
-        April: "01/01/2013",
-        May: "01/01/2013"
+        January: {
+            EB2: "01Oct12",
+            EB3: "01Dec12"
+        },
+        February: {
+            EB2: "15Oct12",
+            EB3: "15Dec12"
+        },
+        March: {
+            EB2: "01Dec12",
+            EB3: "01Feb13"
+        },
+        April: {
+            EB2: "01Jan13",
+            EB3: "01Apr13"
+        },
+        May: {
+            EB2: "01Jan13",
+            EB3: "15Apr13"
+        }
     }
 };
 
-const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].May, DATE_FORMAT);
+const EB2_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].May.EB2, DATE_FORMAT);
+const EB3_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].May.EB3, DATE_FORMAT);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 const drawChart = () => {
-    let PRIORITY_DATE_STRING = "3/7/2013";
+    let PRIORITY_DATE_STRING = "07Mar13";
 
     const paramFor = mindsmine.URL.getQueryParameter(window.location.href, "for");
 
     if (mindsmine.String.areEqual(paramFor, "Sarfraz")) {
-        PRIORITY_DATE_STRING = "12/12/2019";
+        PRIORITY_DATE_STRING = "12Dec19";
     }
 
     const FINAL_PRIORITY_DATE = dayjs(PRIORITY_DATE_STRING, DATE_FORMAT);
 
     const CHART_TITLE = (() => {
-        if (LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
+        if (EB2_LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
             return "Current date is past the priority date. File ASAP. Do NOT wait anymore!";
         }
 
         const durationObject = mindsmine.Duration.preciseDiff(
             FINAL_PRIORITY_DATE.toDate(),
             dayjs().startOf("day").toDate()
-            // LATEST_PRIORITY_DATE.toDate()
+            // EB2_LATEST_PRIORITY_DATE.toDate()
         );
 
         return `Still ${durationObject.displayString} for priority date to be current`;
@@ -239,23 +329,49 @@ const drawChart = () => {
                 _tr = document.createElement("tr");
             }
 
-            const item_date = DATA_SET[item_year][item_month];
-            const itemDateObj = dayjs(item_date, DATE_FORMAT);
-            const numOfDays = mindsmine.Duration.preciseDiff(FINAL_PRIORITY_DATE.toDate(), itemDateObj.toDate()).displayString;
+            const item_date_eb2 = DATA_SET[item_year][item_month]["EB2"];
+            const item_date_eb3 = DATA_SET[item_year][item_month]["EB3"];
+
+            const itemDateEB2Obj = dayjs(item_date_eb2, DATE_FORMAT);
+            const itemDateEB3Obj = dayjs(item_date_eb3, DATE_FORMAT);
+
+            const numOfDaysEB2 = mindsmine.Duration.preciseDiff(FINAL_PRIORITY_DATE.toDate(), itemDateEB2Obj.toDate()).displayString;
+            const numOfDaysEB3 = mindsmine.Duration.preciseDiff(FINAL_PRIORITY_DATE.toDate(), itemDateEB3Obj.toDate()).displayString;
+
+            const isEB2After = FINAL_PRIORITY_DATE.isBefore(itemDateEB2Obj);
+            const isEB3After = FINAL_PRIORITY_DATE.isBefore(itemDateEB3Obj);
 
             // Add name of month
             _td = document.createElement("td");
             _td.appendChild(document.createTextNode(item_month));
             _tr.appendChild(_td);
 
-            // Add priority date for the month
+            // Add EB2 priority date for the month
             _td = document.createElement("td");
-            _td.appendChild(document.createTextNode(item_date));
+            if (isEB2After) {
+                _td.innerHTML = `<span style="color: green;">${item_date_eb2}</span>`;
+            } else {
+                _td.appendChild(document.createTextNode(item_date_eb2));
+            }
             _tr.appendChild(_td);
 
-            // Add number of days from final priority date
+            // Add EB2 number of days from final priority date
             _td = document.createElement("td");
-            _td.appendChild(document.createTextNode(numOfDays));
+            _td.appendChild(document.createTextNode(numOfDaysEB2));
+            _tr.appendChild(_td);
+
+            // Add EB3 priority date for the month
+            _td = document.createElement("td");
+            if (isEB3After) {
+                _td.innerHTML = `<span style="color: green;">${item_date_eb3}</span>`;
+            } else {
+                _td.appendChild(document.createTextNode(item_date_eb3));
+            }
+            _tr.appendChild(_td);
+
+            // Add EB3 number of days from final priority date
+            _td = document.createElement("td");
+            _td.appendChild(document.createTextNode(numOfDaysEB3));
             _tr.appendChild(_td);
 
             // Add row to the table
@@ -265,7 +381,8 @@ const drawChart = () => {
 
             DATA_SET_ARRAY.push([
                 `${item_year} - ${item_month}`,
-                FINAL_PRIORITY_DATE.diff(itemDateObj, "days")
+                FINAL_PRIORITY_DATE.diff(itemDateEB2Obj, "days"),
+                FINAL_PRIORITY_DATE.diff(itemDateEB3Obj, "days")
             ]);
         });
     });
@@ -276,16 +393,28 @@ const drawChart = () => {
             labels: DATA_SET_ARRAY.map(__dataArr => {
                 return __dataArr[0];
             }),
-            datasets: [{
-                label: "Number of Days",
-                backgroundColor: "rgba(255, 0, 0, 1)",
-                borderColor: "rgba(255, 0, 0, 1)",
-                data: DATA_SET_ARRAY.map(__dataArr => {
-                    return __dataArr[1];
-                }),
-                tension: 0.4,
-                fill: false
-            }]
+            datasets: [
+                {
+                    label: "EB2",
+                    backgroundColor: "rgba(255, 0, 0, 1)",
+                    borderColor: "rgba(255, 0, 0, 1)",
+                    data: DATA_SET_ARRAY.map(__dataArr => {
+                        return __dataArr[1];
+                    }),
+                    tension: 0.4,
+                    fill: false
+                },
+                {
+                    label: "EB3",
+                    backgroundColor: "rgba(0, 0, 255, 1)",
+                    borderColor: "rgba(0, 0, 255, 1)",
+                    data: DATA_SET_ARRAY.map(__dataArr => {
+                        return __dataArr[2];
+                    }),
+                    tension: 0.4,
+                    fill: false
+                }
+            ]
         },
         options: {
             responsive: true,
