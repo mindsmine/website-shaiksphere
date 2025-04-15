@@ -16,203 +16,621 @@
 
 dayjs.extend(window.dayjs_plugin_customParseFormat);
 
-const DATE_FORMAT = "M/D/YYYY";
+const DATE_FORMAT = "DDMMMYY";
 // const FINAL_PRIORITY_DATE = dayjs("3/7/2013", DATE_FORMAT);
 
 const DATA_SET = {
     2013: {
-        November: "6/15/2008",
-        December: "11/15/2004"
+        November: {
+            EB2: "15Jun08",
+            EB3: "22Sep03"
+        },
+        December: {
+            EB2: "15Nov04",
+            EB3: "01Sep03"
+        }
     },
     2014: {
-        January: "11/15/2004",
-        February: "11/15/2004",
-        March: "11/15/2004",
-        April: "11/15/2004",
-        May: "11/15/2004",
-        June: "11/15/2004",
-        July: "9/1/2008",
-        August: "1/22/2009",
-        September: "5/1/2009",
-        October: "5/1/2009",
-        November: "2/15/2005",
-        December: "2/15/2005"
+        January: {
+            EB2: "15Nov04",
+            EB3: "01Sep03"
+        },
+        February: {
+            EB2: "15Nov04",
+            EB3: "01Sep03"
+        },
+        March: {
+            EB2: "15Nov04",
+            EB3: "15Sep03"
+        },
+        April: {
+            EB2: "15Nov04",
+            EB3: "15Sep03"
+        },
+        May: {
+            EB2: "15Nov04",
+            EB3: "01Oct03"
+        },
+        June: {
+            EB2: "15Nov04",
+            EB3: "15Oct03"
+        },
+        July: {
+            EB2: "01Sep08",
+            EB3: "01Nov03"
+        },
+        August: {
+            EB2: "22Jan09",
+            EB3: "08Nov03"
+        },
+        September: {
+            EB2: "01May09",
+            EB3: "08Nov03"
+        },
+        October: {
+            EB2: "01May09",
+            EB3: "15Nov03"
+        },
+        November: {
+            EB2: "15Feb05",
+            EB3: "22Nov03"
+        },
+        December: {
+            EB2: "15Feb05",
+            EB3: "01Dec03"
+        }
     },
     2015: {
-        January: "2/15/2005",
-        February: "9/1/2005",
-        March: "1/1/2007",
-        April: "9/1/2007",
-        May: "4/15/2008",
-        June: "10/1/2008",
-        July: "10/1/2008",
-        August: "10/1/2008",
-        September: "1/1/2006",
-        October: "5/1/2005",
-        November: "8/1/2006",
-        December: "6/1/2007"
+        January: {
+            EB2: "15Feb05",
+            EB3: "15Dec03"
+        },
+        February: {
+            EB2: "01Sep05",
+            EB3: "22Dec03"
+        },
+        March: {
+            EB2: "01Jan07",
+            EB3: "01Jan04"
+        },
+        April: {
+            EB2: "01Sep07",
+            EB3: "08Jan04"
+        },
+        May: {
+            EB2: "15Apr08",
+            EB3: "15Jan04"
+        },
+        June: {
+            EB2: "01Oct08",
+            EB3: "22Jan04"
+        },
+        July: {
+            EB2: "01Oct08",
+            EB3: "01Feb04"
+        },
+        August: {
+            EB2: "01Oct08",
+            EB3: "01Jun04"
+        },
+        September: {
+            EB2: "01Jan06",
+            EB3: "22Dec04"
+        },
+        October: {
+            EB2: "01May05",
+            EB3: "08Mar04"
+        },
+        November: {
+            EB2: "01Aug06",
+            EB3: "01Apr04"
+        },
+        December: {
+            EB2: "01Jun07",
+            EB3: "22Apr04"
+        }
     },
     2016: {
-        January: "2/1/2008",
-        February: "8/1/2008",
-        March: "10/15/2008",
-        April: "11/8/2008",
-        May: "11/22/2008",
-        June: "10/1/2004",
-        July: "11/1/2004",
-        August: "11/15/2004",
-        September: "2/22/2005",
-        October: "1/15/2007",
-        November: "11/1/2007",
-        December: "2/1/2008"
+        January: {
+            EB2: "01Feb08",
+            EB3: "15May04"
+        },
+        February: {
+            EB2: "01Aug08",
+            EB3: "15Jun04"
+        },
+        March: {
+            EB2: "15Oct08",
+            EB3: "15Jul04"
+        },
+        April: {
+            EB2: "08Nov08",
+            EB3: "08Aug04"
+        },
+        May: {
+            EB2: "22Nov08",
+            EB3: "01Sep04"
+        },
+        June: {
+            EB2: "01Oct04",
+            EB3: "22Sep04"
+        },
+        July: {
+            EB2: "01Nov04",
+            EB3: "22Oct04"
+        },
+        August: {
+            EB2: "15Nov04",
+            EB3: "08Nov04"
+        },
+        September: {
+            EB2: "22Feb05",
+            EB3: "15Feb05"
+        },
+        October: {
+            EB2: "15Jan07",
+            EB3: "01Mar05"
+        },
+        November: {
+            EB2: "01Nov07",
+            EB3: "08Mar05"
+        },
+        December: {
+            EB2: "01Feb08",
+            EB3: "15Mar05"
+        }
     },
     2017: {
-        January: "4/15/2008",
-        February: "4/15/2008",
-        March: "6/1/2008",
-        April: "6/22/2008",
-        May: "6/22/2008",
-        June: "7/1/2008",
-        July: "7/22/2008",
-        August: "7/22/2008",
-        September: "8/22/2008",
-        October: "9/15/2008",
-        November: "10/8/2008",
-        December: "11/1/2008"
+        January: {
+            EB2: "15Apr08",
+            EB3: "15Mar05"
+        },
+        February: {
+            EB2: "15Apr08",
+            EB3: "22Mar05"
+        },
+        March: {
+            EB2: "01Jun08",
+            EB3: "22Mar05"
+        },
+        April: {
+            EB2: "22Jun08",
+            EB3: "24Mar05"
+        },
+        May: {
+            EB2: "22Jun08",
+            EB3: "25Mar05"
+        },
+        June: {
+            EB2: "01Jul08",
+            EB3: "15May05"
+        },
+        July: {
+            EB2: "22Jul08",
+            EB3: "15Feb06"
+        },
+        August: {
+            EB2: "22Jul08",
+            EB3: "15Jul06"
+        },
+        September: {
+            EB2: "22Aug08",
+            EB3: "15Oct06"
+        },
+        October: {
+            EB2: "15Sep08",
+            EB3: "15Oct06"
+        },
+        November: {
+            EB2: "08Oct08",
+            EB3: "15Oct06"
+        },
+        December: {
+            EB2: "01Nov08",
+            EB3: "15Oct06"
+        }
     },
     2018: {
-        January: "11/22/2008",
-        February: "12/8/2008",
-        March: "12/15/2008",
-        April: "12/22/2008",
-        May: "12/22/2008",
-        June: "12/26/2008",
-        July: "03/15/2009",
-        August: "03/15/2009",
-        September: "01/01/2007",
-        October: "03/26/2009",
-        November: "03/26/2009",
-        December: "04/01/2009"
+        January: {
+            EB2: "22Nov08",
+            EB3: "01Nov06"
+        },
+        February: {
+            EB2: "08Dec08",
+            EB3: "01Dec06"
+        },
+        March: {
+            EB2: "15Dec08",
+            EB3: "01Jan07"
+        },
+        April: {
+            EB2: "22Dec08",
+            EB3: "01Feb08"
+        },
+        May: {
+            EB2: "22Dec08",
+            EB3: "01May08"
+        },
+        June: {
+            EB2: "26Dec08",
+            EB3: "01May08"
+        },
+        July: {
+            EB2: "15Mar09",
+            EB3: "01Nov08"
+        },
+        August: {
+            EB2: "15Mar09",
+            EB3: "01Jan09"
+        },
+        September: {
+            EB2: "01Jan07",
+            EB3: "01Jan03"
+        },
+        October: {
+            EB2: "26Mar09",
+            EB3: "01Jan09"
+        },
+        November: {
+            EB2: "26Mar09",
+            EB3: "01Jan09"
+        },
+        December: {
+            EB2: "01Apr09",
+            EB3: "01Mar09"
+        }
     },
     2019: {
-        January: "04/01/2009",
-        February: "04/06/2009",
-        March: "04/09/2009",
-        April: "04/12/2009",
-        May: "04/16/2009",
-        June: "04/19/2009",
-        July: "04/24/2009",
-        August: "05/02/2009",
-        September: "05/08/2009",
-        October: "05/12/2009",
-        November: "05/13/2009",
-        December: "05/15/2009"
+        January: {
+            EB2: "01Apr09",
+            EB3: "01Mar09"
+        },
+        February: {
+            EB2: "06Apr09",
+            EB3: "22Apr09"
+        },
+        March: {
+            EB2: "09Apr09",
+            EB3: "22May09"
+        },
+        April: {
+            EB2: "12Apr09",
+            EB3: "22Jun09"
+        },
+        May: {
+            EB2: "16Apr09",
+            EB3: "01Jul09"
+        },
+        June: {
+            EB2: "19Apr09",
+            EB3: "01Jul09"
+        },
+        July: {
+            EB2: "24Apr09",
+            EB3: "01Jul09"
+        },
+        August: {
+            EB2: "02May09",
+            EB3: "01Jan06"
+        },
+        September: {
+            EB2: "08May09",
+            EB3: "01Jul05"
+        },
+        October: {
+            EB2: "12May09",
+            EB3: "01Jan09"
+        },
+        November: {
+            EB2: "13May09",
+            EB3: "01Jan09"
+        },
+        December: {
+            EB2: "15May09",
+            EB3: "01Jan09"
+        }
     },
     2020: {
-        January: "05/18/2009",
-        February: "05/19/2009",
-        March: "05/22/2009",
-        April: "05/25/2009",
-        May: "06/02/2009",
-        June: "06/12/2009",
-        July: "07/08/2009",
-        August: "07/08/2009",
-        September: "07/08/2009",
-        October: "09/01/2009",
-        November: "09/22/2009",
-        December: "10/01/2009"
+        January: {
+            EB2: "18May09",
+            EB3: "01Jan09"
+        },
+        February: {
+            EB2: "19May09",
+            EB3: "08Jan09"
+        },
+        March: {
+            EB2: "22May09",
+            EB3: "15Jan09"
+        },
+        April: {
+            EB2: "25May09",
+            EB3: "22Jan09"
+        },
+        May: {
+            EB2: "02Jun09",
+            EB3: "01Mar09"
+        },
+        June: {
+            EB2: "12Jun09",
+            EB3: "01Apr09"
+        },
+        July: {
+            EB2: "08Jul09",
+            EB3: "01Jun09"
+        },
+        August: {
+            EB2: "08Jul09",
+            EB3: "01Oct09"
+        },
+        September: {
+            EB2: "08Jul09",
+            EB3: "01Oct09"
+        },
+        October: {
+            EB2: "01Sep09",
+            EB3: "15Jan10"
+        },
+        November: {
+            EB2: "22Sep09",
+            EB3: "01Mar10"
+        },
+        December: {
+            EB2: "01Oct09",
+            EB3: "15Mar10"
+        }
     },
     2021: {
-        January: "10/08/2009",
-        February: "10/12/2009",
-        March: "01/15/2010",
-        April: "05/01/2010",
-        May: "08/01/2010",
-        June: "12/01/2010",
-        July: "06/01/2011",
-        August: "06/01/2011",
-        September: "09/01/2011",
-        October: "09/01/2011",
-        November: "12/01/2011",
-        December: "05/01/2012"
+        January: {
+            EB2: "08Oct09",
+            EB3: "22Mar10"
+        },
+        February: {
+            EB2: "12Oct09",
+            EB3: "01Apr10"
+        },
+        March: {
+            EB2: "15Jan10",
+            EB3: "01Jul10"
+        },
+        April: {
+            EB2: "01May10",
+            EB3: "01Sep10"
+        },
+        May: {
+            EB2: "01Aug10",
+            EB3: "01Feb11"
+        },
+        June: {
+            EB2: "01Dec10",
+            EB3: "01Nov11"
+        },
+        July: {
+            EB2: "01Jun11",
+            EB3: "01Jan13"
+        },
+        August: {
+            EB2: "01Jun11",
+            EB3: "01Jul13"
+        },
+        September: {
+            EB2: "01Sep11",
+            EB3: "01Jan14"
+        },
+        October: {
+            EB2: "01Sep11",
+            EB3: "01Jan14"
+        },
+        November: {
+            EB2: "01Dec11",
+            EB3: "15Jan12"
+        },
+        December: {
+            EB2: "01May12",
+            EB3: "15Jan12"
+        }
     },
     2022: {
-        January: "07/08/2012",
-        February: "01/01/2013",
-        March: "05/01/2013",
-        April: "07/08/2013",
-        May: "09/01/2013",
-        June: "09/01/2014",
-        July: "12/01/2014",
-        August: "12/01/2014",
-        September: "12/01/2014",
-        October: "04/01/2012",
-        November: "04/01/2012",
-        December: "10/08/2011"
+        January: {
+            EB2: "08Jul12",
+            EB3: "15Jan12"
+        },
+        February: {
+            EB2: "01Jan13",
+            EB3: "15Jan12"
+        },
+        March: {
+            EB2: "01May13",
+            EB3: "15Jan12"
+        },
+        April: {
+            EB2: "08Jul13",
+            EB3: "15Jan12"
+        },
+        May: {
+            EB2: "01Sep13",
+            EB3: "15Jan12"
+        },
+        June: {
+            EB2: "01Sep14",
+            EB3: "15Jan12"
+        },
+        July: {
+            EB2: "01Dec14",
+            EB3: "15Jan12"
+        },
+        August: {
+            EB2: "01Dec14",
+            EB3: "15Feb12"
+        },
+        September: {
+            EB2: "01Dec14",
+            EB3: "15Feb12"
+        },
+        October: {
+            EB2: "01Apr12",
+            EB3: "01Apr12"
+        },
+        November: {
+            EB2: "01Apr12",
+            EB3: "01Apr12"
+        },
+        December: {
+            EB2: "08Oct11",
+            EB3: "15Jun12"
+        }
     },
     2023: {
-        January: "10/08/2011",
-        February: "10/08/2011",
-        March: "10/08/2011",
-        April: "01/01/2011",
-        May: "01/01/2011",
-        June: "01/01/2011",
-        July: "01/01/2011",
-        August: "01/01/2011",
-        September: "01/01/2011",
-        October: "01/01/2012",
-        November: "01/01/2012",
-        December: "01/01/2012"
+        January: {
+            EB2: "08Oct11",
+            EB3: "15Jun12"
+        },
+        February: {
+            EB2: "08Oct11",
+            EB3: "15Jun12"
+        },
+        March: {
+            EB2: "08Oct11",
+            EB3: "15Jun12"
+        },
+        April: {
+            EB2: "01Jan11",
+            EB3: "15Jun12"
+        },
+        May: {
+            EB2: "01Jan11",
+            EB3: "15Jun12"
+        },
+        June: {
+            EB2: "01Jan11",
+            EB3: "15Jun12"
+        },
+        July: {
+            EB2: "01Jan11",
+            EB3: "01Jan09"
+        },
+        August: {
+            EB2: "01Jan11",
+            EB3: "01Jan09"
+        },
+        September: {
+            EB2: "01Jan11",
+            EB3: "01Jan09"
+        },
+        October: {
+            EB2: "01Jan12",
+            EB3: "01May12"
+        },
+        November: {
+            EB2: "01Jan12",
+            EB3: "01May12"
+        },
+        December: {
+            EB2: "01Jan12",
+            EB3: "01May12"
+        }
     },
     2024: {
-        January: "03/01/2012",
-        February: "03/01/2012",
-        March: "03/01/2012",
-        April: "04/01/2012",
-        May: "04/15/2012",
-        June: "04/15/2012",
-        July: "06/15/2012",
-        August: "07/15/2012",
-        September: "07/15/2012",
-        October: "07/15/2012",
-        November: "07/15/2012",
-        December: "08/01/2012"
+        January: {
+            EB2: "01Mar12",
+            EB3: "01Jun12"
+        },
+        February: {
+            EB2: "01Mar12",
+            EB3: "01Jul12"
+        },
+        March: {
+            EB2: "01Mar12",
+            EB3: "01Jul12"
+        },
+        April: {
+            EB2: "15Apr12",
+            EB3: "15Aug12"
+        },
+        May: {
+            EB2: "15Apr12",
+            EB3: "15Aug12"
+        },
+        June: {
+            EB2: "15Apr12",
+            EB3: "22Aug12"
+        },
+        July: {
+            EB2: "15Jun12",
+            EB3: "22Sep12"
+        },
+        August: {
+            EB2: "15Jul12",
+            EB3: "22Oct12"
+        },
+        September: {
+            EB2: "15Jul12",
+            EB3: "22Oct12"
+        },
+        October: {
+            EB2: "15Jul12",
+            EB3: "01Nov12"
+        },
+        November: {
+            EB2: "15Jul12",
+            EB3: "01Nov12"
+        },
+        December: {
+            EB2: "01Aug12",
+            EB3: "08Nov12"
+        }
     },
     2025: {
-        January: "10/01/2012",
-        February: "10/15/2012",
-        March: "12/01/2012",
-        April: "01/01/2013",
-        May: "01/01/2013"
+        January: {
+            EB2: "01Oct12",
+            EB3: "01Dec12"
+        },
+        February: {
+            EB2: "15Oct12",
+            EB3: "15Dec12"
+        },
+        March: {
+            EB2: "01Dec12",
+            EB3: "01Feb13"
+        },
+        April: {
+            EB2: "01Jan13",
+            EB3: "01Apr13"
+        },
+        May: {
+            EB2: "01Jan13",
+            EB3: "15Apr13"
+        }
     }
 };
 
-const LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].May, DATE_FORMAT);
+const EB2_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].May.EB2, DATE_FORMAT);
+const EB3_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].May.EB3, DATE_FORMAT);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 const drawChart = () => {
-    let PRIORITY_DATE_STRING = "3/7/2013";
+    let PRIORITY_DATE_STRING = "07Mar13";
 
     const paramFor = mindsmine.URL.getQueryParameter(window.location.href, "for");
 
     if (mindsmine.String.areEqual(paramFor, "Sarfraz")) {
-        PRIORITY_DATE_STRING = "12/12/2019";
+        PRIORITY_DATE_STRING = "12Dec19";
     }
 
     const FINAL_PRIORITY_DATE = dayjs(PRIORITY_DATE_STRING, DATE_FORMAT);
 
     const CHART_TITLE = (() => {
-        if (LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
+        if (EB2_LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
             return "Current date is past the priority date. File ASAP. Do NOT wait anymore!";
         }
 
         const durationObject = mindsmine.Duration.preciseDiff(
             FINAL_PRIORITY_DATE.toDate(),
             dayjs().startOf("day").toDate()
-            // LATEST_PRIORITY_DATE.toDate()
+            // EB2_LATEST_PRIORITY_DATE.toDate()
         );
 
         return `Still ${durationObject.displayString} for priority date to be current`;
@@ -239,23 +657,46 @@ const drawChart = () => {
                 _tr = document.createElement("tr");
             }
 
-            const item_date = DATA_SET[item_year][item_month];
-            const itemDateObj = dayjs(item_date, DATE_FORMAT);
-            const numOfDays = mindsmine.Duration.preciseDiff(FINAL_PRIORITY_DATE.toDate(), itemDateObj.toDate()).displayString;
+            const item_date_eb2 = DATA_SET[item_year][item_month]["EB2"];
+            const item_date_eb3 = DATA_SET[item_year][item_month]["EB3"];
+
+            const itemDateEB2Obj = dayjs(item_date_eb2, DATE_FORMAT);
+            const itemDateEB3Obj = dayjs(item_date_eb3, DATE_FORMAT);
+
+            const numOfDaysEB2 = mindsmine.Duration.preciseDiff(FINAL_PRIORITY_DATE.toDate(), itemDateEB2Obj.toDate()).displayString;
+            const numOfDaysEB3 = mindsmine.Duration.preciseDiff(FINAL_PRIORITY_DATE.toDate(), itemDateEB3Obj.toDate()).displayString;
 
             // Add name of month
             _td = document.createElement("td");
             _td.appendChild(document.createTextNode(item_month));
             _tr.appendChild(_td);
 
-            // Add priority date for the month
+            // Add EB2 priority date for the month
             _td = document.createElement("td");
-            _td.appendChild(document.createTextNode(item_date));
+            if (itemDateEB2Obj.isAfter(FINAL_PRIORITY_DATE)) {
+                _td.innerHTML = `<span style="background-color: yellow;">${item_date_eb2}</span>`;
+            } else {
+                _td.appendChild(document.createTextNode(item_date_eb2));
+            }
             _tr.appendChild(_td);
 
-            // Add number of days from final priority date
+            // Add EB2 number of days from final priority date
             _td = document.createElement("td");
-            _td.appendChild(document.createTextNode(numOfDays));
+            _td.appendChild(document.createTextNode(numOfDaysEB2));
+            _tr.appendChild(_td);
+
+            // Add EB3 priority date for the month
+            _td = document.createElement("td");
+            if (itemDateEB3Obj.isAfter(FINAL_PRIORITY_DATE)) {
+                _td.innerHTML = `<span style="background-color: yellow;">${item_date_eb3}</span>`;
+            } else {
+                _td.appendChild(document.createTextNode(item_date_eb3));
+            }
+            _tr.appendChild(_td);
+
+            // Add EB3 number of days from final priority date
+            _td = document.createElement("td");
+            _td.appendChild(document.createTextNode(numOfDaysEB3));
             _tr.appendChild(_td);
 
             // Add row to the table
@@ -265,7 +706,8 @@ const drawChart = () => {
 
             DATA_SET_ARRAY.push([
                 `${item_year} - ${item_month}`,
-                FINAL_PRIORITY_DATE.diff(itemDateObj, "days")
+                FINAL_PRIORITY_DATE.diff(itemDateEB2Obj, "days"),
+                FINAL_PRIORITY_DATE.diff(itemDateEB3Obj, "days")
             ]);
         });
     });
@@ -276,16 +718,28 @@ const drawChart = () => {
             labels: DATA_SET_ARRAY.map(__dataArr => {
                 return __dataArr[0];
             }),
-            datasets: [{
-                label: "Number of Days",
-                backgroundColor: "rgba(255, 0, 0, 1)",
-                borderColor: "rgba(255, 0, 0, 1)",
-                data: DATA_SET_ARRAY.map(__dataArr => {
-                    return __dataArr[1];
-                }),
-                tension: 0.4,
-                fill: false
-            }]
+            datasets: [
+                {
+                    label: "EB2",
+                    backgroundColor: "rgba(255, 0, 0, 1)",
+                    borderColor: "rgba(255, 0, 0, 1)",
+                    data: DATA_SET_ARRAY.map(__dataArr => {
+                        return __dataArr[1];
+                    }),
+                    tension: 0.4,
+                    fill: false
+                },
+                {
+                    label: "EB3",
+                    backgroundColor: "rgba(0, 0, 255, 1)",
+                    borderColor: "rgba(0, 0, 255, 1)",
+                    data: DATA_SET_ARRAY.map(__dataArr => {
+                        return __dataArr[2];
+                    }),
+                    tension: 0.4,
+                    fill: false
+                }
+            ]
         },
         options: {
             responsive: true,
