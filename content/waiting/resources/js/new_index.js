@@ -137,21 +137,57 @@ const DATA_SET = {
         November: "12/01/2011",
         December: "05/01/2012"
     },
-    2022: {
-        January: "07/08/2012",
-        February: "01/01/2013",
-        March: "05/01/2013",
-        April: "07/08/2013",
-        May: "09/01/2013",
-        June: "09/01/2014",
-        July: "12/01/2014",
-        August: "12/01/2014",
-        September: "12/01/2014",
-        October: "04/01/2012",
-        November: "04/01/2012",
-        December: "10/08/2011"
-    },
     */
+    2022: {
+        January: {
+            EB2: "08Jul12",
+            EB3: "15Jan12"
+        },
+        February: {
+            EB2: "01Jan13",
+            EB3: "15Jan12"
+        },
+        March: {
+            EB2: "01May13",
+            EB3: "15Jan12"
+        },
+        April: {
+            EB2: "08Jul13",
+            EB3: "15Jan12"
+        },
+        May: {
+            EB2: "01Sep13",
+            EB3: "15Jan12"
+        },
+        June: {
+            EB2: "01Sep14",
+            EB3: "15Jan12"
+        },
+        July: {
+            EB2: "01Dec14",
+            EB3: "15Jan12"
+        },
+        August: {
+            EB2: "01Dec14",
+            EB3: "15Feb12"
+        },
+        September: {
+            EB2: "01Dec14",
+            EB3: "15Feb12"
+        },
+        October: {
+            EB2: "01Apr12",
+            EB3: "01Apr12"
+        },
+        November: {
+            EB2: "01Apr12",
+            EB3: "01Apr12"
+        },
+        December: {
+            EB2: "08Oct11",
+            EB3: "15Jun12"
+        }
+    },
     2023: {
         January: {
             EB2: "08Oct11",
