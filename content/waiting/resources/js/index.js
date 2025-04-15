@@ -623,17 +623,33 @@ const drawChart = () => {
     const FINAL_PRIORITY_DATE = dayjs(PRIORITY_DATE_STRING, DATE_FORMAT);
 
     const CHART_TITLE = (() => {
+        const chartTitle = [];
+
+        // EB2
         if (EB2_LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
-            return "Current date is past the priority date. File ASAP. Do NOT wait anymore!";
+            chartTitle.push("For EB2, current date is past the priority date.");
+        } else {
+            const durationObject = mindsmine.Duration.preciseDiff(
+                FINAL_PRIORITY_DATE.toDate(),
+                dayjs().startOf("day").toDate()
+            );
+
+            chartTitle.push(`For EB2, still ${durationObject.displayString} for priority date to be current.`);
         }
 
-        const durationObject = mindsmine.Duration.preciseDiff(
-            FINAL_PRIORITY_DATE.toDate(),
-            dayjs().startOf("day").toDate()
-            // EB2_LATEST_PRIORITY_DATE.toDate()
-        );
+        // EB3
+        if (EB3_LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
+            chartTitle.push("For EB3, current date is past the priority date.");
+        } else {
+            const durationObject = mindsmine.Duration.preciseDiff(
+                FINAL_PRIORITY_DATE.toDate(),
+                dayjs().startOf("day").toDate()
+            );
 
-        return `Still ${durationObject.displayString} for priority date to be current`;
+            chartTitle.push(`For EB3, still ${durationObject.displayString} for priority date to be current.`);
+        }
+
+        return chartTitle.join(" ");
     })();
 
     const DATA_SET_ARRAY = [];
