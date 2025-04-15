@@ -109,21 +109,57 @@ const DATA_SET = {
         November: "05/13/2009",
         December: "05/15/2009"
     },
-    2020: {
-        January: "05/18/2009",
-        February: "05/19/2009",
-        March: "05/22/2009",
-        April: "05/25/2009",
-        May: "06/02/2009",
-        June: "06/12/2009",
-        July: "07/08/2009",
-        August: "07/08/2009",
-        September: "07/08/2009",
-        October: "09/01/2009",
-        November: "09/22/2009",
-        December: "10/01/2009"
-    },
     */
+    2020: {
+        January: {
+            EB2: "18May09",
+            EB3: "01Jan09"
+        },
+        February: {
+            EB2: "19May09",
+            EB3: "08Jan09"
+        },
+        March: {
+            EB2: "22May09",
+            EB3: "15Jan09"
+        },
+        April: {
+            EB2: "25May09",
+            EB3: "22Jan09"
+        },
+        May: {
+            EB2: "02Jun09",
+            EB3: "01Mar09"
+        },
+        June: {
+            EB2: "12Jun09",
+            EB3: "01Apr09"
+        },
+        July: {
+            EB2: "08Jul09",
+            EB3: "01Jun09"
+        },
+        August: {
+            EB2: "08Jul09",
+            EB3: "01Oct09"
+        },
+        September: {
+            EB2: "08Jul09",
+            EB3: "01Oct09"
+        },
+        October: {
+            EB2: "01Sep09",
+            EB3: "15Jan10"
+        },
+        November: {
+            EB2: "22Sep09",
+            EB3: "01Mar10"
+        },
+        December: {
+            EB2: "01Oct09",
+            EB3: "15Mar10"
+        }
+    },
     2021: {
         January: {
             EB2: "08Oct09",
@@ -421,7 +457,7 @@ const drawChart = () => {
             // Add EB2 priority date for the month
             _td = document.createElement("td");
             if (isEB2After) {
-                _td.innerHTML = `<span style="color: green;">${item_date_eb2}</span>`;
+                _td.innerHTML = `<span style="color: red;">${item_date_eb2}</span>`;
             } else {
                 _td.appendChild(document.createTextNode(item_date_eb2));
             }
@@ -435,7 +471,7 @@ const drawChart = () => {
             // Add EB3 priority date for the month
             _td = document.createElement("td");
             if (isEB3After) {
-                _td.innerHTML = `<span style="color: green;">${item_date_eb3}</span>`;
+                _td.innerHTML = `<span style="color: blue;">${item_date_eb3}</span>`;
             } else {
                 _td.appendChild(document.createTextNode(item_date_eb3));
             }
