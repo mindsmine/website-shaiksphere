@@ -20,26 +20,66 @@ const DATE_FORMAT = "DDMMMYY";
 // const FINAL_PRIORITY_DATE = dayjs("3/7/2013", DATE_FORMAT);
 
 const DATA_SET = {
-    /*
     2013: {
-        November: "6/15/2008",
-        December: "11/15/2004"
+        November: {
+            EB2: "15Jun08",
+            EB3: "22Sep03"
+        },
+        December: {
+            EB2: "15Nov04",
+            EB3: "01Sep03"
+        }
     },
     2014: {
-        January: "11/15/2004",
-        February: "11/15/2004",
-        March: "11/15/2004",
-        April: "11/15/2004",
-        May: "11/15/2004",
-        June: "11/15/2004",
-        July: "9/1/2008",
-        August: "1/22/2009",
-        September: "5/1/2009",
-        October: "5/1/2009",
-        November: "2/15/2005",
-        December: "2/15/2005"
+        January: {
+            EB2: "15Nov04",
+            EB3: "01Sep03"
+        },
+        February: {
+            EB2: "15Nov04",
+            EB3: "01Sep03"
+        },
+        March: {
+            EB2: "15Nov04",
+            EB3: "15Sep03"
+        },
+        April: {
+            EB2: "15Nov04",
+            EB3: "15Sep03"
+        },
+        May: {
+            EB2: "15Nov04",
+            EB3: "01Oct03"
+        },
+        June: {
+            EB2: "15Nov04",
+            EB3: "15Oct03"
+        },
+        July: {
+            EB2: "01Sep08",
+            EB3: "01Nov03"
+        },
+        August: {
+            EB2: "22Jan09",
+            EB3: "08Nov03"
+        },
+        September: {
+            EB2: "01May09",
+            EB3: "08Nov03"
+        },
+        October: {
+            EB2: "01May09",
+            EB3: "15Nov03"
+        },
+        November: {
+            EB2: "15Feb05",
+            EB3: "22Nov03"
+        },
+        December: {
+            EB2: "15Feb05",
+            EB3: "01Dec03"
+        }
     },
-    */
     2015: {
         January: {
             EB2: "15Feb05",
