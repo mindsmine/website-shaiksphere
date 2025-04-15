@@ -666,9 +666,6 @@ const drawChart = () => {
             const numOfDaysEB2 = mindsmine.Duration.preciseDiff(FINAL_PRIORITY_DATE.toDate(), itemDateEB2Obj.toDate()).displayString;
             const numOfDaysEB3 = mindsmine.Duration.preciseDiff(FINAL_PRIORITY_DATE.toDate(), itemDateEB3Obj.toDate()).displayString;
 
-            const isEB2After = FINAL_PRIORITY_DATE.isBefore(itemDateEB2Obj);
-            const isEB3After = FINAL_PRIORITY_DATE.isBefore(itemDateEB3Obj);
-
             // Add name of month
             _td = document.createElement("td");
             _td.appendChild(document.createTextNode(item_month));
@@ -676,7 +673,7 @@ const drawChart = () => {
 
             // Add EB2 priority date for the month
             _td = document.createElement("td");
-            if (isEB2After) {
+            if (itemDateEB2Obj.isAfter(FINAL_PRIORITY_DATE)) {
                 _td.innerHTML = `<span style="background-color: yellow;">${item_date_eb2}</span>`;
             } else {
                 _td.appendChild(document.createTextNode(item_date_eb2));
@@ -690,7 +687,7 @@ const drawChart = () => {
 
             // Add EB3 priority date for the month
             _td = document.createElement("td");
-            if (isEB3After) {
+            if (itemDateEB3Obj.isAfter(FINAL_PRIORITY_DATE)) {
                 _td.innerHTML = `<span style="background-color: yellow;">${item_date_eb3}</span>`;
             } else {
                 _td.appendChild(document.createTextNode(item_date_eb3));
