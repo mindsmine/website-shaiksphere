@@ -67,25 +67,61 @@ const DATA_SET = {
         November: "11/1/2007",
         December: "2/1/2008"
     },
-    2017: {
-        January: "4/15/2008",
-        February: "4/15/2008",
-        March: "6/1/2008",
-        April: "6/22/2008",
-        May: "6/22/2008",
-        June: "7/1/2008",
-        July: "7/22/2008",
-        August: "7/22/2008",
-        September: "8/22/2008",
-        October: "9/15/2008",
-        November: "10/8/2008",
-        December: "11/1/2008"
-    },
     */
+    2017: {
+        January: {
+            EB2: "15Apr08",
+            EB3: "15Mar05"
+        },
+        February: {
+            EB2: "15Apr08",
+            EB3: "22Mar05"
+        },
+        March: {
+            EB2: "01Jun08",
+            EB3: "22Mar05"
+        },
+        April: {
+            EB2: "22Jun08",
+            EB3: "24Mar05"
+        },
+        May: {
+            EB2: "22Jun08",
+            EB3: "25Mar05"
+        },
+        June: {
+            EB2: "01Jul08",
+            EB3: "15May05"
+        },
+        July: {
+            EB2: "22Jul08",
+            EB3: "15Feb06"
+        },
+        August: {
+            EB2: "22Jul08",
+            EB3: "15Jul06"
+        },
+        September: {
+            EB2: "22Aug08",
+            EB3: "15Oct06"
+        },
+        October: {
+            EB2: "15Sep08",
+            EB3: "15Oct06"
+        },
+        November: {
+            EB2: "08Oct08",
+            EB3: "15Oct06"
+        },
+        December: {
+            EB2: "01Nov08",
+            EB3: "15Oct06"
+        }
+    },
     2018: {
         January: {
-            EB2: "15Dec08",
-            EB3: "01Jan07"
+            EB2: "22Nov08",
+            EB3: "01Nov06"
         },
         February: {
             EB2: "08Dec08",
