@@ -95,21 +95,57 @@ const DATA_SET = {
         November: "03/26/2009",
         December: "04/01/2009"
     },
-    2019: {
-        January: "04/01/2009",
-        February: "04/06/2009",
-        March: "04/09/2009",
-        April: "04/12/2009",
-        May: "04/16/2009",
-        June: "04/19/2009",
-        July: "04/24/2009",
-        August: "05/02/2009",
-        September: "05/08/2009",
-        October: "05/12/2009",
-        November: "05/13/2009",
-        December: "05/15/2009"
-    },
     */
+    2019: {
+        January: {
+            EB2: "01Apr09",
+            EB3: "01Mar09"
+        },
+        February: {
+            EB2: "06Apr09",
+            EB3: "22Apr09"
+        },
+        March: {
+            EB2: "09Apr09",
+            EB3: "22May09"
+        },
+        April: {
+            EB2: "12Apr09",
+            EB3: "22Jun09"
+        },
+        May: {
+            EB2: "16Apr09",
+            EB3: "01Jul09"
+        },
+        June: {
+            EB2: "19Apr09",
+            EB3: "01Jul09"
+        },
+        July: {
+            EB2: "24Apr09",
+            EB3: "01Jul09"
+        },
+        August: {
+            EB2: "02May09",
+            EB3: "01Jan06"
+        },
+        September: {
+            EB2: "08May09",
+            EB3: "01Jul05"
+        },
+        October: {
+            EB2: "12May09",
+            EB3: "01Jan09"
+        },
+        November: {
+            EB2: "13May09",
+            EB3: "01Jan09"
+        },
+        December: {
+            EB2: "15May09",
+            EB3: "01Jan09"
+        }
+    },
     2020: {
         January: {
             EB2: "18May09",
@@ -471,7 +507,7 @@ const drawChart = () => {
             // Add EB3 priority date for the month
             _td = document.createElement("td");
             if (isEB3After) {
-                _td.innerHTML = `<span style="color: blue;">${item_date_eb3}</span>`;
+                _td.innerHTML = `<span style="color: red;">${item_date_eb3}</span>`;
             } else {
                 _td.appendChild(document.createTextNode(item_date_eb3));
             }
