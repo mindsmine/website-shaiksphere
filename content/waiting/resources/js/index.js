@@ -612,12 +612,16 @@ const DATA_SET = {
         August: {
             EB2: "01Jan13",
             EB3: "22May13"
+        },
+        September: {
+            EB2: "01Jan13",
+            EB3: "22May13"
         }
     }
 };
 
-const EB2_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].August.EB2, DATE_FORMAT);
-const EB3_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].August.EB3, DATE_FORMAT);
+const EB2_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].September.EB2, DATE_FORMAT);
+const EB3_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].September.EB3, DATE_FORMAT);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
