@@ -616,12 +616,16 @@ const DATA_SET = {
         September: {
             EB2: "01Jan13",
             EB3: "22May13"
+        },
+        October: {
+            EB2: "01Apr13",
+            EB3: "22Aug13"
         }
     }
 };
 
-const EB2_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].September.EB2, DATE_FORMAT);
-const EB3_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].September.EB3, DATE_FORMAT);
+// const EB2_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].October.EB2, DATE_FORMAT);
+// const EB3_LATEST_PRIORITY_DATE = dayjs(DATA_SET["2025"].October.EB3, DATE_FORMAT);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -639,33 +643,12 @@ const drawChart = () => {
     const FINAL_PRIORITY_DATE = dayjs(PRIORITY_DATE_STRING, DATE_FORMAT);
 
     const CHART_TITLE = (() => {
-        const chartTitle = [];
+        const durationObject = mindsmine.Duration.preciseDiff(
+            FINAL_PRIORITY_DATE.toDate(),
+            dayjs().startOf("day").toDate()
+        );
 
-        // EB2
-        if (EB2_LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
-            chartTitle.push("For EB2, current date is past the priority date.");
-        } else {
-            const durationObject = mindsmine.Duration.preciseDiff(
-                FINAL_PRIORITY_DATE.toDate(),
-                dayjs().startOf("day").toDate()
-            );
-
-            chartTitle.push(`For EB2, still ${durationObject.displayString} for priority date to be current.`);
-        }
-
-        // EB3
-        if (EB3_LATEST_PRIORITY_DATE.isAfter(FINAL_PRIORITY_DATE)) {
-            chartTitle.push("For EB3, current date is past the priority date.");
-        } else {
-            const durationObject = mindsmine.Duration.preciseDiff(
-                FINAL_PRIORITY_DATE.toDate(),
-                dayjs().startOf("day").toDate()
-            );
-
-            chartTitle.push(`For EB3, still ${durationObject.displayString} for priority date to be current.`);
-        }
-
-        return chartTitle.join(" ");
+        return `Still waiting - ${durationObject.displayString} - and counting.`;
     })();
 
     const DATA_SET_ARRAY = [];
