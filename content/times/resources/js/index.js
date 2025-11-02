@@ -18,11 +18,6 @@
 
 const LOCALE = "en-US";
 
-const IST = "Asia/Kolkata";
-const ET = "America/New_York";
-const CT = "America/Chicago";
-const PT = "America/Los_Angeles";
-
 const ZoneFormatter = (timeZone) => {
     return {
         Date: new Intl.DateTimeFormat(LOCALE, {
@@ -36,6 +31,14 @@ const ZoneFormatter = (timeZone) => {
     };
 };
 
+const USA_EAST = ZoneFormatter("America/New_York");
+
+const USA_CENTRAL = ZoneFormatter("America/Chicago");
+
+const UKRAINE = ZoneFormatter("Europe/Kyiv");
+
+const INDIA = ZoneFormatter("Asia/Kolkata");
+
 const addMinutes = (date, minutes) => {
     const newDate = new Date(date.getTime());
 
@@ -47,42 +50,33 @@ const addMinutes = (date, minutes) => {
 const generateRowContent = (date) => {
     let cells = [];
 
-    cells.push(`<td>${IndiaFormatter.Date.format(date)}</td>`);
-    cells.push(`<td style="text-align: right;">${IndiaFormatter.Time.format(date)}</td>`);
-    cells.push(`<td>${SEAFormatter.Date.format(date)}</td>`);
-    cells.push(`<td style="text-align: right;">${SEAFormatter.Time.format(date)}</td>`);
-    cells.push(`<td>${KCFormatter.Date.format(date)}</td>`);
-    cells.push(`<td style="text-align: right;">${KCFormatter.Time.format(date)}</td>`);
-    cells.push(`<td>${NYCFormatter.Date.format(date)}</td>`);
-    cells.push(`<td style="text-align: right;">${NYCFormatter.Time.format(date)}</td>`);
+    cells.push(`<td style="text-align: right;">${USA_EAST.Time.format(date)} &nbsp; ${USA_EAST.Date.format(date)}</td>`);
+
+    cells.push(`<td style="text-align: right;">${USA_CENTRAL.Time.format(date)} &nbsp; ${USA_CENTRAL.Date.format(date)}</td>`);
+
+    cells.push(`<td style="text-align: right;">${UKRAINE.Time.format(date)} &nbsp; ${UKRAINE.Date.format(date)}</td>`);
+
+    cells.push(`<td style="text-align: right;">${INDIA.Time.format(date)} &nbsp; ${INDIA.Date.format(date)}</td>`);
 
     return cells.join("");
 };
-
-const IndiaFormatter = ZoneFormatter(IST);
-
-const NYCFormatter = ZoneFormatter(ET);
-
-const KCFormatter = ZoneFormatter(CT);
-
-const SEAFormatter = ZoneFormatter(PT);
 
 const onDOMLoad = () => {
     const curDate = new Date();
 
     let tbodyContent = [];
-    tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
-    tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
+    tbodyContent.push("<tr colspan='4'>&nbsp;</tr>");
+    tbodyContent.push("<tr colspan='4'>&nbsp;</tr>");
 
     tbodyContent.push(`<tr style="background-color: AntiqueWhite;">${generateRowContent(curDate)}</tr>`);
 
-    tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
-    tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
+    tbodyContent.push("<tr colspan='4'>&nbsp;</tr>");
+    tbodyContent.push("<tr colspan='4'>&nbsp;</tr>");
 
     // During Daylight Saving Time
-    const nycOffset = 4;
+    // const nycOffset = 4;
     // During Standard Time
-    // const nycOffset = 5;
+    const nycOffset = 5;
 
     const utcHour = 9 + nycOffset;
 
@@ -92,8 +86,8 @@ const onDOMLoad = () => {
         tbodyContent.push(`<tr>${generateRowContent(addMinutes(utcDate, i * 30))}</tr>`);
     }
 
-    tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
-    tbodyContent.push("<tr colspan='6'>&nbsp;</tr>");
+    tbodyContent.push("<tr colspan='4'>&nbsp;</tr>");
+    tbodyContent.push("<tr colspan='4'>&nbsp;</tr>");
 
     for (let i = 27; i < 36; i++) {
         tbodyContent.push(`<tr>${generateRowContent(addMinutes(utcDate, i * 30))}</tr>`);
