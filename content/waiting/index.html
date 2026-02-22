@@ -27,59 +27,81 @@
 
     <script type="text/javascript" src="https://cdn.shaiksphere.com/mindsmine-js-4.9.0.min.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.8/dayjs.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.8/plugin/customParseFormat.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.18/dayjs.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.18/plugin/customParseFormat.min.js"></script>
 
+    <script type="text/javascript" src="resources/js/dataset.js"></script>
     <script type="text/javascript" src="resources/js/index.js"></script>
 
     <link rel="stylesheet" href="../resources/css/random.css" />
 </head>
-<body onload="drawChart()">
-<div style="width: 100%;">
-    <canvas id="waitingCanvas"></canvas>
+<body>
+<form id="formOne" onsubmit="WaitingClass.onFormSubmit(); return false;">
+    <button id="refreshButton" type="button" style="display: none;" onclick="window.location.reload(true);">Pick a new priority date</button>
+    <label id="priority_date_label" for="priority_date_input">Enter your 'Priority Date' as per your approved I-140 form:</label>
+    <input id="priority_date_input" type="date" required="required">
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <button id="submitButton" type="submit">Submit</button>
+</form>
+<br />
+<div id="formOneOutput" style="width: 100%; display: none;">
+    <div id="summaryText" style="width: 100%;"></div>
+    <br />
+    <details>
+        <summary>Tabular View</summary>
+        <table style="width: 100%;" id="contentTable">
+            <caption>Dates with <span style="background-color: yellow;">yellow background</span> - your priority date is <u>current</u> for that month<br /><br /></caption>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Month</th>
+                    <th>EB-2 Priority Date</th>
+                    <th>EB-2 Number of Days</th>
+                    <th>EB-3 Priority Date</th>
+                    <th>EB-3 Number of Days</th>
+                </tr>
+            </thead>
+            <tbody id="contentTableBody"></tbody>
+        </table>
+    </details>
+    <br />
+    <details>
+        <summary>Graphical View</summary>
+        <canvas id="waitingCanvas"></canvas>
+    </details>
+    <br />
 </div>
 <hr />
+<br />
 <details>
-    <summary>Details</summary>
-    <a target="_blank" href="https://egov.uscis.gov/">Case Status Online</a>
-    <br />
-    <a target="_blank" href="https://flag.dol.gov/case-status-search">Case Status Search</a>
-    <br />
-    <a target="_blank" href="https://flag.dol.gov/processingtimes">Processing Times</a>
-    <br />
-    <a target="_blank" href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html">Visa Bulletin</a>
-    <br />
-    <a target="_blank" href="https://egov.uscis.gov/processing-times/">Check Case Processing Times</a>
-    <br />
-    <a target="_blank" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin">AOS Filing Charts</a>
-    <br />
-    <br />
-    <br />
-    <a target="_blank" href="http://www.mygcvisa.com/visa-bulletin/visa-bulletin-predictions.aspx">Visa Bulletin Predictions</a>
-    <br />
-    <a target="_blank" href="https://www.seekingvisa.com/bulletin/employment-india/">USCIS Visa Bulletin - India Centric</a>
-    <br />
-    <a target="_blank" href="https://www.mygcvisa.com/calculator/">Priority Date Calculator</a>
-    <br />
-    <a target="_blank" href="https://permtimeline.com/">PERM Timeline</a>
-    <br />
-    <br />
-    <br />
-    <table style="width: 100%;" id="contentTable">
-        <thead>
-        <tr>
-            <th>Year</th>
-            <th>Month</th>
-            <th>EB2 Priority Date</th>
-            <th>EB2 Number of Days</th>
-            <th>EB3 Priority Date</th>
-            <th>EB3 Number of Days</th>
-        </tr>
-        </thead>
-        <tbody id="contentTableBody"></tbody>
-    </table>
+    <summary>Reference URLs</summary>
+    <ul>
+        <li><a target="_blank" href="https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html">Visa Bulletin</a></li>
+        <li>Department of Labor (DOL)
+            <ul>
+                <li><a target="_blank" href="https://flag.dol.gov/case-status-search">DOL - Case Status Search</a></li>
+                <li><a target="_blank" href="https://flag.dol.gov/processingtimes">DOL - Processing Times</a></li>
+            </ul>
+        </li>
+        <li>United States Citizenship and Immigration Services (USCIS)
+            <ul>
+                <li><a target="_blank" href="https://egov.uscis.gov/">USCIS - Case Status Online</a></li>
+                <li><a target="_blank" href="https://egov.uscis.gov/processing-times/">USCIS - Check Case Processing Times</a></li>
+                <li><a target="_blank" href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/visa-availability-priority-dates/adjustment-of-status-filing-charts-from-the-visa-bulletin">USCIS - AOS Filing Charts</a></li>
+            </ul>
+        </li>
+        <li>Additional URLs
+            <ul>
+                <li><a target="_blank" href="http://www.mygcvisa.com/visa-bulletin/visa-bulletin-predictions.aspx">Visa Bulletin Predictions</a></li>
+                <li><a target="_blank" href="https://www.seekingvisa.com/bulletin/employment-india/">USCIS Visa Bulletin - India Centric</a></li>
+                <li><a target="_blank" href="https://www.mygcvisa.com/calculator/">Priority Date Calculator</a></li>
+            </ul>
+        </li>
+    </ul>
 </details>
 </body>
 </html>
