@@ -14,8 +14,31 @@
  limitations under the License.
  */
 
-const ShowSource = function (divID = "") {
-    window.document.getElementById(divID).innerHTML = mindsmine.String.htmlEncode(
+const OnLoad = function () {
+    const now = new Date();
+
+    window.document.querySelectorAll(".countdown").forEach(element => {
+        const _date = element.getAttribute("data-countdown-date") || now;
+
+        const _finalMsg = element.getAttribute("data-countdown-finalMsg") || "Final Message Not Available!";
+
+        Countdown(_date, _finalMsg, element);
+    });
+
+    window.document.querySelectorAll(".since").forEach(element => {
+        const _startDate = element.getAttribute("data-countdown-start-date") || now;
+
+        DisplayTimeSpan(_startDate, null, element);
+    });
+
+    window.document.querySelectorAll(".duration").forEach(element => {
+        const _startDate = element.getAttribute("data-countdown-start-date") || now;
+        const _endDate = element.getAttribute("data-countdown-end-date") || now;
+
+        DisplayTimeSpan(_startDate, _endDate, element);
+    });
+
+    window.document.getElementById("pageSource").innerHTML = mindsmine.String.htmlEncode(
         window.document.getElementsByTagName("html")[0].innerHTML
     );
 };
