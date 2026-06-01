@@ -649,6 +649,10 @@ const DATA_SET = {
         May: {
             EB2: "15Jul14",
             EB3: "15Nov13"
+        },
+        June: {
+            EB2: "01Sep13",
+            EB3: "15Dec13"
         }
     }
 };
