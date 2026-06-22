@@ -152,7 +152,9 @@ class WaitingClass {
 
             summaryText.push("Your <u>Final Action Date</u> for <strong>EB-2</strong> is");
 
-            if (LATEST_EB2_DATE_OBJ.isAfter(FINAL_PRIORITY_DATE)) {
+            if (mindsmine.String.isEmpty(LATEST_EB2_DAYS)) {
+                summaryText.push("Unauthorized.");
+            } else if (LATEST_EB2_DATE_OBJ.isAfter(FINAL_PRIORITY_DATE)) {
                 summaryText.push("CURRENT.");
             } else {
                 summaryText.push(`still <em>at least</em> ${LATEST_EB2_DAYS} away.`);
@@ -162,7 +164,9 @@ class WaitingClass {
 
             summaryText.push("Your <u>Final Action Date</u> for <strong>EB-3</strong> is");
 
-            if (LATEST_EB3_DATE_OBJ.isAfter(FINAL_PRIORITY_DATE)) {
+            if (mindsmine.String.isEmpty(LATEST_EB3_DAYS)) {
+                summaryText.push("Unauthorized.");
+            } else if (LATEST_EB3_DATE_OBJ.isAfter(FINAL_PRIORITY_DATE)) {
                 summaryText.push("CURRENT.");
             } else {
                 summaryText.push(`still <em>at least</em> ${LATEST_EB3_DAYS} away.`);

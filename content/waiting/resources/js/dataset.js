@@ -653,6 +653,10 @@ const DATA_SET = {
         June: {
             EB2: "01Sep13",
             EB3: "15Dec13"
+        },
+        July: {
+            EB2: "",
+            EB3: "01Jan14"
         }
     }
 };
